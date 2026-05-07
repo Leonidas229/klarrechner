@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wallbox-Kosten-Rechner 2026 – Was kostet eine Ladestation wirklich?</title>
+<meta name="description" content="Berechne die echten Kosten einer Wallbox für dein Zuhause. Mit Installation, Steuerersparnis, PV-Bonus und Amortisation gegenüber öffentlichem Laden. Aktuelle Daten 2026." />
+<meta name="keywords" content="Wallbox Kosten, Wallbox Rechner, Wallbox Installation Preis, Wallbox Förderung 2026" />
+<meta property="og:title" content="Wallbox-Kosten-Rechner 2026" />
+<meta property="og:description" content="Was kostet eine Wallbox wirklich – und wann amortisiert sie sich?" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Wallbox-Kosten-Rechner",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+
+<style>
+  body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #1a1a1a; }
+  .display { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+  .accent { color: #2D5A3D; }
+  .accent-bg { background: #2D5A3D; }
+  .accent-border { border-color: #2D5A3D; }
+  .accent-soft { background: #E8F0EA; }
+  .warm-bg { background: #F4EFE6; }
+  .ice-color { color: #B45309; }
+  input[type="number"]:focus, input[type="range"]:focus, select:focus { outline: 2px solid #2D5A3D; outline-offset: 2px; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary { cursor: pointer; list-style: none; }
+  .pill { transition: all 0.15s ease; }
+  .pill:hover { background: #2D5A3D; color: white; border-color: #2D5A3D; }
+  .pill.active { background: #2D5A3D; color: white; border-color: #2D5A3D; }
+  .help-icon { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #ddd; color: #555; text-align: center; line-height: 14px; font-size: 10px; cursor: help; margin-left: 4px; }
+  .scenario { transition: all 0.2s ease; }
+  .scenario:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .scenario.active { border-color: #2D5A3D; background: #E8F0EA; }
+  input[type="checkbox"] { accent-color: #2D5A3D; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 accent-bg rounded-sm flex items-center justify-center text-white font-bold">A</div>
+      <span class="display font-semibold text-lg">AutoKosten<span class="accent">.de</span></span>
+    </div>
+    <nav class="hidden md:flex gap-8 text-sm text-stone-600">
+      <a href="e-auto-rechner-v2.html" class="hover:text-stone-900">E-Auto Rechner</a>
+      <a href="#" class="font-semibold text-stone-900">Wallbox</a>
+      <a href="#" class="hover:text-stone-900">Ratgeber</a>
+      <a href="#" class="hover:text-stone-900">Förderung</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="max-w-5xl mx-auto px-6 pt-12 pb-6">
+  <div class="max-w-3xl">
+    <p class="text-sm uppercase tracking-widest accent font-medium mb-4">Wallbox-Kostenrechner · Stand 2026</p>
+    <h1 class="display text-4xl md:text-5xl font-semibold leading-tight mb-5">
+      Was kostet eine Wallbox wirklich – und ab wann lohnt sie sich?
+    </h1>
+    <p class="text-stone-600 text-lg leading-relaxed">
+      Berechne die echten Gesamtkosten einer Heim-Ladestation: Hardware, Installation, Stromverbrauch
+      und Steuerersparnis. Plus: Vergleich gegen öffentliches Laden, damit du siehst,
+      wann sich die Investition zurückzahlt.
+    </p>
+  </div>
+</section>
+
+<!-- Wohnsituation -->
+<section class="max-w-5xl mx-auto px-6 pb-6">
+  <p class="text-sm text-stone-600 mb-3">Deine Wohnsituation:</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <button data-scenario="efh-einfach" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🏡</p>
+      <p class="font-semibold text-sm">Einfamilienhaus</p>
+      <p class="text-xs text-stone-500">Garage am Haus, einfach</p>
+    </button>
+    <button data-scenario="efh-aufwand" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🏠</p>
+      <p class="font-semibold text-sm">Einfamilienhaus</p>
+      <p class="text-xs text-stone-500">Altbau / aufwendig</p>
+    </button>
+    <button data-scenario="reihenhaus" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🏘️</p>
+      <p class="font-semibold text-sm">Reihenhaus / DHH</p>
+      <p class="text-xs text-stone-500">Mittlerer Aufwand</p>
+    </button>
+    <button data-scenario="mfh" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🏢</p>
+      <p class="font-semibold text-sm">Mehrfamilienhaus</p>
+      <p class="text-xs text-stone-500">Tiefgarage, WEG</p>
+    </button>
+  </div>
+</section>
+
+<!-- Calculator -->
+<section class="max-w-5xl mx-auto px-6 pb-12">
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- INPUTS -->
+    <div class="warm-bg rounded-lg p-6 md:p-8">
+      <h2 class="display text-2xl font-semibold mb-6">Deine Angaben</h2>
+
+      <!-- Hardware -->
+      <h3 class="font-semibold mb-3 flex items-center gap-2">
+        <span class="text-xl">🔌</span> Hardware
+      </h3>
+      <div class="space-y-3 mb-6">
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">
+            Wallbox-Modell
+            <span class="help-icon" title="Einsteiger: 11 kW ohne Smart-Funktionen. Standard: mit App, MID-Zähler. Premium: PV-Steuerung, Lastmanagement, Bidirektional.">?</span>
+          </label>
+          <select id="hardware" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm">
+            <option value="500">Einsteiger 11 kW (~500 €)</option>
+            <option value="900" selected>Standard 11 kW mit App (~900 €)</option>
+            <option value="1500">Premium 11 kW mit PV-Steuerung (~1.500 €)</option>
+            <option value="2500">22 kW + Smart-Features (~2.500 €)</option>
+            <option value="custom">Eigener Preis…</option>
+          </select>
+          <input type="number" id="hardware-custom" placeholder="Preis in €" class="hidden mt-2 w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">
+            Installationskosten (€)
+            <span class="help-icon" title="Einfach: 500-800 €. Standard EFH: 800-1.200 €. Aufwändig (Altbau, Wege, Zählertausch): 1.500-2.500 €.">?</span>
+          </label>
+          <input type="number" id="installation" value="1000" step="50" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">
+            Zusatzkosten (FI-Schalter, Zählertausch etc.) (€)
+            <span class="help-icon" title="FI-Schalter Typ A 150-400 €. Separater Zähler für Dienstwagen 200-400 €. Nur ergänzen wenn nötig.">?</span>
+          </label>
+          <input type="number" id="extras" value="200" step="50" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+      </div>
+
+      <hr class="my-6 border-stone-300" />
+
+      <!-- Nutzung -->
+      <h3 class="font-semibold mb-3 flex items-center gap-2">
+        <span class="text-xl">⚡</span> Deine Nutzung
+      </h3>
+      <div class="space-y-3 mb-6">
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Jährliche Fahrleistung (km)</label>
+          <input type="number" id="km" value="15000" step="1000" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Verbrauch E-Auto (kWh / 100 km)</label>
+          <input type="number" id="consumption" value="18" step="0.1" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">
+            Strompreis zu Hause (€ / kWh)
+            <span class="help-icon" title="Hauptstromtarif aktuell ca. 0,32-0,40 €. Mit speziellem Wallbox- oder dynamischem Tarif oft 0,25-0,32 €.">?</span>
+          </label>
+          <input type="number" id="home-price" value="0.35" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">
+            Anteil zu Hause geladen (%)
+            <span class="help-icon" title="Realistischer Schnitt: 70-90% bei eigenem Stellplatz. 30-50% bei häufigen Langstrecken.">?</span>
+          </label>
+          <input type="range" id="home-share" min="0" max="100" value="80" step="5" class="w-full" />
+          <p class="text-xs text-stone-500 mt-1"><span id="home-share-label">80</span>% zu Hause · <span id="public-share-label">20</span>% öffentlich</p>
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">
+            Strompreis öffentlich (€ / kWh)
+            <span class="help-icon" title="AC öffentlich ca. 0,55 €. DC-Schnellladen 0,65-0,89 €. Mittelwert je nach Mix ca. 0,60-0,70 €.">?</span>
+          </label>
+          <input type="number" id="public-price" value="0.65" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+      </div>
+
+      <hr class="my-6 border-stone-300" />
+
+      <!-- Bonus-Faktoren -->
+      <h3 class="font-semibold mb-3 flex items-center gap-2">
+        <span class="text-xl">🌱</span> Bonus-Faktoren
+      </h3>
+      <div class="space-y-3 mb-6">
+        <label class="flex items-center gap-3 p-3 bg-white border border-stone-200 rounded-md cursor-pointer">
+          <input type="checkbox" id="pv" class="w-4 h-4" />
+          <div class="flex-1">
+            <p class="text-sm font-medium">PV-Anlage vorhanden</p>
+            <p class="text-xs text-stone-500">Reduziert Stromkosten beim Heimladen erheblich</p>
+          </div>
+        </label>
+        <label class="flex items-center gap-3 p-3 bg-white border border-stone-200 rounded-md cursor-pointer">
+          <input type="checkbox" id="tax" class="w-4 h-4" checked />
+          <div class="flex-1">
+            <p class="text-sm font-medium">Haushaltsnahe Dienstleistung absetzen</p>
+            <p class="text-xs text-stone-500">20% der Installation als Steuerersparnis (max. 1.200 €)</p>
+          </div>
+        </label>
+        <label class="flex items-center gap-3 p-3 bg-white border border-stone-200 rounded-md cursor-pointer">
+          <input type="checkbox" id="thg" class="w-4 h-4" checked />
+          <div class="flex-1">
+            <p class="text-sm font-medium">THG-Prämie nutzen</p>
+            <p class="text-xs text-stone-500">~250 € pro Jahr für E-Auto-Halter (steuerfrei)</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="space-y-4">
+
+      <!-- Anschaffung -->
+      <div class="bg-white border border-stone-200 rounded-lg p-6">
+        <p class="text-sm text-stone-500 mb-1">Anschaffung gesamt (einmalig)</p>
+        <h2 id="total-cost" class="display text-3xl font-semibold mb-3 accent">–</h2>
+        <div id="cost-breakdown" class="text-sm text-stone-600 space-y-1"></div>
+      </div>
+
+      <!-- Pro Jahr Vergleich -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white border-2 accent-border rounded-lg p-5">
+          <p class="text-xs uppercase tracking-wide accent font-semibold mb-1">Mit Wallbox</p>
+          <p class="text-xs text-stone-500 mb-2">Stromkosten / Jahr</p>
+          <p id="annual-with" class="display text-2xl font-semibold">–</p>
+          <p id="annual-with-detail" class="text-xs text-stone-500 mt-1">– € / 100 km</p>
+        </div>
+        <div class="bg-white border border-stone-200 rounded-lg p-5">
+          <p class="text-xs uppercase tracking-wide ice-color font-semibold mb-1">Nur öffentlich</p>
+          <p class="text-xs text-stone-500 mb-2">Stromkosten / Jahr</p>
+          <p id="annual-without" class="display text-2xl font-semibold">–</p>
+          <p id="annual-without-detail" class="text-xs text-stone-500 mt-1">– € / 100 km</p>
+        </div>
+      </div>
+
+      <!-- Amortisation -->
+      <div class="bg-white border border-stone-200 rounded-lg p-6">
+        <h3 class="display font-semibold mb-2">Amortisation</h3>
+        <p id="amortization-text" class="text-sm text-stone-700 mb-4">–</p>
+        <div id="year-chart" class="space-y-1.5 text-xs"></div>
+      </div>
+
+      <!-- 10-Jahres-Sicht -->
+      <div class="accent-soft rounded-lg p-6 border accent-border">
+        <p class="text-xs uppercase tracking-wide accent font-semibold mb-2">📊 In 10 Jahren</p>
+        <p id="ten-year-text" class="text-stone-800 leading-relaxed">–</p>
+      </div>
+
+      <!-- Affiliate-Platzhalter -->
+      <div class="bg-stone-900 text-white rounded-lg p-5">
+        <p class="text-xs uppercase tracking-wide text-stone-400 mb-2">💡 Tipp</p>
+        <p class="text-sm leading-relaxed mb-3">
+          Hol dir <strong>3 Angebote</strong> von Elektrikern in deiner Region.
+          Die Preise variieren stark — oft 500-1.000 € Unterschied bei gleicher Leistung.
+        </p>
+        <a href="#" class="inline-block bg-white text-stone-900 px-4 py-2 rounded text-sm font-medium hover:bg-stone-100">
+          Elektriker-Angebote vergleichen →
+        </a>
+        <p class="text-xs text-stone-500 mt-2">* Affiliate-Link (Platzhalter)</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-xs text-stone-500 mt-8 max-w-3xl">
+    Hinweis: Dieser Rechner liefert eine Schätzung auf Basis deiner Eingaben.
+    Tatsächliche Kosten können je nach Region, baulichen Gegebenheiten, Strompreisentwicklung
+    und individueller Steuersituation abweichen. Keine Steuer- oder Kaufberatung. Stand: 2026.
+  </p>
+</section>
+
+<!-- Erklär-Sektion -->
+<section class="bg-white border-y border-stone-200 py-16">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="text-sm uppercase tracking-widest accent font-medium mb-4">Hintergrund</p>
+    <h2 class="display text-3xl font-semibold mb-6">Wallbox-Kosten 2026: Was du wissen musst</h2>
+
+    <div class="prose prose-stone max-w-none space-y-4 text-stone-700 leading-relaxed">
+      <p>
+        Eine Heim-Wallbox ist 2026 für die meisten E-Auto-Fahrer die mit Abstand günstigste Lade-Option.
+        Aber die Gesamtkosten variieren stark — zwischen <strong>1.000 € und 5.500 €</strong>, je nach
+        Wallbox-Modell, Wohnsituation und Installationsaufwand.
+      </p>
+
+      <h3 class="display text-xl font-semibold pt-4">Die drei Hauptkostenblöcke</h3>
+
+      <p>
+        <strong>1. Hardware (300–2.500 €):</strong> Eine 11-kW-Wallbox ohne Smart-Funktionen gibt es ab
+        ca. 300 €. Standardmodelle mit App-Steuerung und MID-Zähler (für Dienstwagen-Abrechnung) liegen
+        bei 700–1.200 €. Premium-Modelle mit PV-Überschussladen, dynamischem Lastmanagement oder
+        bidirektionalem Laden (V2H/V2G) kosten 1.500–2.500 €.
+      </p>
+
+      <p>
+        <strong>2. Installation (500–2.500 €):</strong> Hier liegt die größte Unsicherheit. Im
+        Einfamilienhaus mit Garage am Haus und modernem Sicherungskasten sind 500–1.000 € realistisch.
+        Im Altbau oder bei langen Kabelwegen können schnell 1.500–2.500 € anfallen — vor allem wenn der
+        Zählerschrank erneuert werden muss. Die <strong>Anmeldung beim Netzbetreiber ist Pflicht</strong>;
+        ab 12 kW Ladeleistung ist auch eine Genehmigung nötig.
+      </p>
+
+      <p>
+        <strong>3. Zusatzkomponenten (0–500 €):</strong> Ein FI-Schutzschalter Typ A (gesetzlich Pflicht)
+        kostet 150–400 €, falls nicht in der Wallbox integriert. Ein separater Zähler für die steuerliche
+        Abrechnung von Dienstwagen-Ladestrom kostet 200–400 €.
+      </p>
+
+      <h3 class="display text-xl font-semibold pt-4">Förderungen 2026 – die Wahrheit</h3>
+
+      <p>
+        Die populäre <strong>KfW-Förderung 440</strong> für private Wallboxen ist seit 2021 ausgelaufen
+        und wurde nicht erneuert. Stand 2026 gibt es für Privatpersonen im Einfamilienhaus
+        <strong>keine bundesweite Förderung</strong> mehr.
+      </p>
+
+      <p>
+        Was es noch gibt: Einige Bundesländer und Kommunen haben eigene Programme (oft begrenztes Budget,
+        schnell ausgeschöpft). Ein neues Bundesprogramm startet im April 2026 mit 500 Mio. € — aber nur
+        für <strong>Mehrparteienhäuser</strong>, bis zu 2.000 € pro Stellplatz für bidirektionale Wallboxen.
+      </p>
+
+      <p>
+        <strong>Steuertrick für alle:</strong> Die Installation einer Wallbox kannst du als
+        haushaltsnahe Dienstleistung absetzen — 20 % der reinen Arbeitskosten (nicht des Materials),
+        maximal 1.200 € Steuerersparnis pro Jahr. Wichtig: Rechnung muss überwiesen werden, keine
+        Barzahlung.
+      </p>
+
+      <h3 class="display text-xl font-semibold pt-4">Wann lohnt sich die Wallbox?</h3>
+
+      <p>
+        Faustregel: Bei 12.000+ km/Jahr und mindestens 70 % Heimladen amortisiert sich eine Wallbox
+        meist in <strong>3–5 Jahren</strong>. Mit eigener PV-Anlage geht das auf 2–3 Jahre runter.
+        Wer dagegen viel pendelt und unterwegs lädt, braucht deutlich länger oder eine andere Lösung.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-3xl mx-auto px-6 py-16">
+  <p class="text-sm uppercase tracking-widest accent font-medium mb-4">FAQ</p>
+  <h2 class="display text-3xl font-semibold mb-8">Häufige Fragen</h2>
+
+  <div class="space-y-3">
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center">
+        <span>11 kW oder 22 kW Wallbox – was ist sinnvoller?</span><span class="accent">+</span>
+      </summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
+        Für 95% der Privathaushalte ist eine 11-kW-Wallbox die richtige Wahl. Sie reicht für
+        Übernachtladen problemlos aus, ist günstiger und braucht keine Genehmigung beim Netzbetreiber
+        (nur Anmeldung). Eine 22-kW-Wallbox ist nur sinnvoll, wenn dein E-Auto sie nutzen kann
+        (viele können nur 11 kW AC) und du regelmäßig schnell laden musst. Tipp: Kabel für 22 kW
+        verlegen lassen, aber 11-kW-Box installieren – upgrade später möglich.
+      </p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center">
+        <span>Welche Förderung gibt es 2026 für Wallboxen?</span><span class="accent">+</span>
+      </summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
+        Für Privatpersonen im Einfamilienhaus gibt es 2026 keine bundesweite Förderung mehr (KfW 440
+        ausgelaufen). Manche Bundesländer und Stadtwerke bieten regionale Zuschüsse — das lohnt sich
+        zu prüfen. Ab April 2026 startet ein neues Bundesprogramm für Mehrparteienhäuser
+        (bis 2.000 € pro Stellplatz). Steuerlich: 20% der Installationskosten als haushaltsnahe
+        Dienstleistung absetzbar (max. 1.200 € Ersparnis).
+      </p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center">
+        <span>Darf ich als Mieter eine Wallbox installieren?</span><span class="accent">+</span>
+      </summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
+        Ja. Nach § 554 BGB hast du als Mieter einen gesetzlichen Anspruch auf Zustimmung zur
+        Installation einer Ladeeinrichtung. Der Vermieter darf den Einbau nicht grundsätzlich
+        verweigern, kann aber die Ausgestaltung mitbestimmen (z.B. Position, Optik, Elektriker).
+        Die Kosten trägt in der Regel der Mieter. Bei Auszug muss meist der Originalzustand
+        wiederhergestellt werden – am besten vorher schriftlich vereinbaren.
+      </p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center">
+        <span>Wie schnell lädt eine 11-kW-Wallbox mein E-Auto?</span><span class="accent">+</span>
+      </summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
+        Mit 11 kW lädst du etwa 50–70 km Reichweite pro Stunde. Ein typischer 75-kWh-Akku ist in
+        ca. 7 Stunden komplett geladen — also problemlos über Nacht. Wichtig: Dein E-Auto muss
+        die volle Ladeleistung auch akzeptieren. Manche Hybride und Elektroautos laden AC nur
+        mit 7,4 kW oder sogar 3,7 kW.
+      </p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center">
+        <span>Lohnt sich eine Wallbox mit PV-Anlage besonders?</span><span class="accent">+</span>
+      </summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
+        Sehr deutlich. Solarstrom kostet dich rund 8–12 Cent/kWh (Erzeugungskosten), Netzstrom
+        35–40 Cent. Mit einer PV-fähigen Wallbox (Überschussladen) kannst du dein Auto fast
+        kostenlos laden, wenn die Sonne scheint. Bei 15.000 km/Jahr und 50% PV-Anteil sparst du
+        gegenüber Vollnetzladen ca. 400–600 € pro Jahr. Eine PV-fähige Wallbox kostet 200–500 €
+        mehr — amortisiert sich also oft in unter einem Jahr.
+      </p>
+    </details>
+
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center">
+        <span>Was ist die §14a EnWG-Pflicht für neue Wallboxen?</span><span class="accent">+</span>
+      </summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
+        Seit 2024 müssen alle neu installierten Wallboxen ab 4,2 kW vom Netzbetreiber bei
+        Netzengpässen vorübergehend gedrosselt werden können — auf minimal 4,2 kW. Eine
+        komplette Abschaltung ist nicht erlaubt. Im Gegenzug bekommst du Rabatte auf das
+        Netzentgelt (Modul 1: pauschaler Abschlag, Modul 2: reduzierter Arbeitspreis).
+        In der Praxis greift die Drosselung selten und kurz.
+      </p>
+    </details>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-stone-500 flex flex-col md:flex-row justify-between gap-4">
+    <p>© 2026 AutoKosten.de – Demo-Version</p>
+    <div class="flex gap-6">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Wohnsituationen mit typischen Werten
+  const scenarios = {
+    'efh-einfach': { hardware: '900', installation: 800,  extras: 150 },
+    'efh-aufwand': { hardware: '900', installation: 1800, extras: 350 },
+    'reihenhaus':  { hardware: '900', installation: 1200, extras: 200 },
+    'mfh':         { hardware: '900', installation: 2200, extras: 400 }
+  };
+
+  document.querySelectorAll('[data-scenario]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const s = scenarios[btn.dataset.scenario];
+      document.getElementById('hardware').value = s.hardware;
+      document.getElementById('hardware-custom').classList.add('hidden');
+      document.getElementById('installation').value = s.installation;
+      document.getElementById('extras').value = s.extras;
+      document.querySelectorAll('[data-scenario]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      calculate();
+    });
+  });
+
+  // Custom Hardware-Input toggle
+  document.getElementById('hardware').addEventListener('change', (e) => {
+    const custom = document.getElementById('hardware-custom');
+    if (e.target.value === 'custom') custom.classList.remove('hidden');
+    else custom.classList.add('hidden');
+    calculate();
+  });
+
+  const fmt = (n) => new Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
+  const fmt2 = (n) => new Intl.NumberFormat('de-DE', {minimumFractionDigits:2, maximumFractionDigits:2}).format(n);
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+
+  function calculate() {
+    // Hardware
+    const hwSel = document.getElementById('hardware').value;
+    const hwPrice = hwSel === 'custom' ? v('hardware-custom') : parseFloat(hwSel);
+    const installation = v('installation');
+    const extras = v('extras');
+
+    // Steuerersparnis: 20% der Installationskosten (gerundet, geschätzt nur Arbeitskosten = 70% der Installation)
+    const taxSavings = document.getElementById('tax').checked
+      ? Math.min(installation * 0.7 * 0.20, 1200)
+      : 0;
+
+    const upfrontGross = hwPrice + installation + extras;
+    const upfrontNet = upfrontGross - taxSavings;
+
+    document.getElementById('total-cost').textContent = fmt(upfrontNet);
+
+    document.getElementById('cost-breakdown').innerHTML = `
+      <div class="flex justify-between"><span>Wallbox-Hardware</span><span>${fmt(hwPrice)}</span></div>
+      <div class="flex justify-between"><span>Installation</span><span>${fmt(installation)}</span></div>
+      <div class="flex justify-between"><span>Zusatzkomponenten</span><span>${fmt(extras)}</span></div>
+      ${taxSavings > 0 ? `<div class="flex justify-between accent"><span>– Steuerersparnis</span><span>−${fmt(taxSavings)}</span></div>` : ''}
+      <div class="flex justify-between font-semibold pt-2 border-t border-stone-200 mt-2"><span>Effektive Anschaffung</span><span>${fmt(upfrontNet)}</span></div>
+    `;
+
+    // Jährliche Stromkosten
+    const km = v('km');
+    const consumption = v('consumption');
+    const kWhYear = (consumption / 100) * km;
+    const homeShare = v('home-share') / 100;
+    let homePrice = v('home-price');
+
+    // PV-Bonus: bei aktiviertem PV-Anlage rechnen wir 50% des Heimladens mit nur 12 ct/kWh
+    const pvActive = document.getElementById('pv').checked;
+    let effectiveHomePrice = homePrice;
+    if (pvActive) {
+      effectiveHomePrice = homePrice * 0.5 + 0.12 * 0.5;
+    }
+
+    const publicPrice = v('public-price');
+    const thgPrice = document.getElementById('thg').checked ? 250 : 0;
+
+    const annualWith = kWhYear * homeShare * effectiveHomePrice + kWhYear * (1 - homeShare) * publicPrice - thgPrice;
+    const annualWithout = kWhYear * publicPrice - thgPrice;
+
+    document.getElementById('annual-with').textContent = fmt(annualWith);
+    document.getElementById('annual-without').textContent = fmt(annualWithout);
+    document.getElementById('annual-with-detail').textContent = fmt2((kWhYear * homeShare * effectiveHomePrice + kWhYear * (1 - homeShare) * publicPrice) / km * 100) + ' € / 100 km';
+    document.getElementById('annual-without-detail').textContent = fmt2(publicPrice * consumption) + ' € / 100 km';
+
+    // Slider Labels
+    document.getElementById('home-share-label').textContent = (homeShare * 100).toFixed(0);
+    document.getElementById('public-share-label').textContent = (100 - homeShare * 100).toFixed(0);
+
+    // Amortisation
+    const annualSaving = annualWithout - annualWith;
+    const amortText = document.getElementById('amortization-text');
+
+    if (annualSaving <= 0) {
+      amortText.innerHTML = `<span class="ice-color font-semibold">Bei deinen Werten amortisiert sich die Wallbox nicht</span> — die Stromkosten sind mit Wallbox aktuell nicht günstiger. Prüfe ob Strompreise oder Heim-Anteil realistisch sind.`;
+    } else {
+      const years = upfrontNet / annualSaving;
+      const yearStr = years < 1
+        ? `unter 1 Jahr`
+        : `${years.toFixed(1)} Jahre`;
+      amortText.innerHTML = `Bei <strong>${fmt(annualSaving)}</strong> Ersparnis pro Jahr amortisiert sich die Wallbox in <strong class="accent">${yearStr}</strong>.`;
+    }
+
+    // Jahresweise Visualisierung
+    const chart = document.getElementById('year-chart');
+    let html = '';
+    let cumWith = upfrontNet;
+    let cumWithout = 0;
+    let breakEven = null;
+
+    for (let y = 1; y <= 10; y++) {
+      cumWith += annualWith;
+      cumWithout += annualWithout;
+      if (breakEven === null && cumWith < cumWithout) breakEven = y;
+
+      const max = Math.max(cumWith, cumWithout, 1);
+      const wPct = (cumWith / max) * 100;
+      const woPct = (cumWithout / max) * 100;
+
+      html += `
+        <div class="grid grid-cols-12 gap-1 items-center text-xs">
+          <div class="col-span-1 text-stone-500">J${y}</div>
+          <div class="col-span-11 space-y-0.5">
+            <div class="flex items-center gap-1">
+              <div class="accent-bg h-2 rounded-sm" style="width:${Math.max(wPct, 1)}%"></div>
+              <span class="text-stone-600 text-xs">${fmt(cumWith)}</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <div class="h-2 rounded-sm" style="width:${Math.max(woPct, 1)}%; background:#B45309"></div>
+              <span class="text-stone-600 text-xs">${fmt(cumWithout)}</span>
+            </div>
+          </div>
+        </div>`;
+    }
+    chart.innerHTML = html + `<p class="text-xs text-stone-500 mt-3"><span class="inline-block w-2 h-2 accent-bg rounded-sm mr-1"></span>Mit Wallbox &nbsp;&nbsp;<span class="inline-block w-2 h-2 rounded-sm mr-1" style="background:#B45309"></span>Nur öffentlich</p>`;
+
+    // 10-Jahres-Sicht
+    const tenYearSaving = cumWithout - cumWith;
+    const tenYearText = document.getElementById('ten-year-text');
+    if (tenYearSaving > 0) {
+      tenYearText.innerHTML = `Mit der Wallbox sparst du über 10 Jahre rund <strong>${fmt(tenYearSaving)}</strong> gegenüber rein öffentlichem Laden — bei deinen aktuellen Annahmen.`;
+    } else {
+      tenYearText.innerHTML = `Bei deinen aktuellen Annahmen lohnt sich die Wallbox finanziell nicht. Prüfe Heim-Anteil, Strompreise oder Fahrleistung.`;
+    }
+  }
+
+  const ids = ['hardware-custom','installation','extras','km','consumption','home-price','home-share','public-price','pv','tax','thg'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', calculate);
+    el.addEventListener('change', calculate);
+  });
+  calculate();
+</script>
+
+</body>
+</html>
