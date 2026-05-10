@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>E-Auto vs. Verbrenner Rechner 2026 – Lohnt sich der Umstieg wirklich?</title>
+<title>E-Auto vs. Verbrenner Rechner 2026 – Klarrechner.de</title>
 <meta name="description" content="Vergleiche die echten Gesamtkosten von Elektroauto und Verbrenner für Deutschland 2026. Inklusive THG-Prämie, Kfz-Steuer, Wertverlust und Förderungen. Kostenlos & ohne Anmeldung." />
 <meta name="keywords" content="E-Auto Rechner, Elektroauto vs Verbrenner, Gesamtkosten E-Auto, THG-Prämie, Kfz-Steuer Elektroauto" />
-<meta property="og:title" content="E-Auto vs. Verbrenner Rechner 2026" />
+<meta property="og:title" content="E-Auto vs. Verbrenner Rechner 2026 – Klarrechner.de" />
 <meta property="og:description" content="In 60 Sekunden herausfinden, ob sich ein E-Auto für dich rechnet." />
-<meta property="og:type" content="website" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Schema.org markup für SEO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,7 +35,7 @@
   .warm-bg { background: #F4EFE6; }
   .ice-color { color: #B45309; }
   .ice-bg { background: #FEF3E2; }
-  input[type="number"]:focus, input[type="range"]:focus { outline: 2px solid #2D5A3D; outline-offset: 2px; }
+  input[type="number"]:focus, input[type="range"]:focus, select:focus { outline: 2px solid #2D5A3D; outline-offset: 2px; }
   details summary::-webkit-details-marker { display: none; }
   details summary { cursor: pointer; list-style: none; }
   .pill { transition: all 0.15s ease; }
@@ -49,23 +47,26 @@
 </head>
 <body>
 
-<!-- Header -->
 <header class="border-b border-stone-200 bg-white">
   <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 accent-bg rounded-sm flex items-center justify-center text-white font-bold">A</div>
-      <span class="display font-semibold text-lg">AutoKosten<span class="accent">.de</span></span>
-    </div>
+    <a href="index.html" class="flex items-center gap-2">
+      <svg viewBox="0 0 36 36" class="w-8 h-8" aria-label="Klarrechner Logo">
+        <rect x="6" y="22" width="5" height="8" rx="1" fill="#2D5A3D" opacity="0.3"/>
+        <rect x="13" y="16" width="5" height="14" rx="1" fill="#2D5A3D" opacity="0.55"/>
+        <rect x="20" y="10" width="5" height="20" rx="1" fill="#2D5A3D" opacity="0.8"/>
+        <rect x="27" y="6" width="5" height="24" rx="1" fill="#2D5A3D"/>
+      </svg>
+      <span class="display font-semibold text-lg">Klar<span class="accent">rechner</span>.de</span>
+    </a>
     <nav class="hidden md:flex gap-8 text-sm text-stone-600">
-      <a href="#" class="hover:text-stone-900">Rechner</a>
+      <a href="index.html" class="hover:text-stone-900">Startseite</a>
+      <a href="#" class="font-semibold text-stone-900">E-Auto Rechner</a>
+      <a href="wallbox-rechner.html" class="hover:text-stone-900">Wallbox</a>
       <a href="#" class="hover:text-stone-900">Ratgeber</a>
-      <a href="#" class="hover:text-stone-900">Förderung</a>
-      <a href="#" class="hover:text-stone-900">Über uns</a>
     </nav>
   </div>
 </header>
 
-<!-- Hero -->
 <section class="max-w-5xl mx-auto px-6 pt-12 pb-6">
   <div class="max-w-3xl">
     <p class="text-sm uppercase tracking-widest accent font-medium mb-4">Kostenrechner · Stand 2026</p>
@@ -79,7 +80,6 @@
   </div>
 </section>
 
-<!-- Profile-Pills für schnellen Start -->
 <section class="max-w-5xl mx-auto px-6 pb-6">
   <p class="text-sm text-stone-600 mb-3">Schneller Start mit einem Beispiel-Profil:</p>
   <div class="flex flex-wrap gap-2">
@@ -90,65 +90,44 @@
   </div>
 </section>
 
-<!-- Calculator -->
 <section class="max-w-5xl mx-auto px-6 pb-12">
   <div class="grid md:grid-cols-2 gap-6">
 
-    <!-- INPUTS -->
     <div class="warm-bg rounded-lg p-6 md:p-8">
       <h2 class="display text-2xl font-semibold mb-6">Deine Angaben</h2>
 
       <div class="mb-6">
-        <label class="block text-sm font-medium mb-2">
-          Jährliche Fahrleistung
-          <span class="text-stone-500 font-normal">(km)</span>
-        </label>
-        <input type="number" id="km" value="15000" min="1000" max="100000" step="1000"
-          class="w-full px-4 py-2.5 bg-white border border-stone-300 rounded-md" />
+        <label class="block text-sm font-medium mb-2">Jährliche Fahrleistung <span class="text-stone-500 font-normal">(km)</span></label>
+        <input type="number" id="km" value="15000" min="1000" max="100000" step="1000" class="w-full px-4 py-2.5 bg-white border border-stone-300 rounded-md" />
       </div>
 
       <div class="mb-6">
-        <label class="block text-sm font-medium mb-2">
-          Betrachtungszeitraum
-          <span id="years-display" class="accent font-semibold ml-2">5 Jahre</span>
-        </label>
+        <label class="block text-sm font-medium mb-2">Betrachtungszeitraum <span id="years-display" class="accent font-semibold ml-2">5 Jahre</span></label>
         <input type="range" id="years" min="1" max="15" value="5" class="w-full" />
       </div>
 
       <hr class="my-6 border-stone-300" />
 
-      <!-- E-Auto -->
       <div class="mb-6">
-        <h3 class="font-semibold accent mb-3 flex items-center gap-2">
-          <span class="text-xl">⚡</span> Elektroauto
-        </h3>
+        <h3 class="font-semibold accent mb-3 flex items-center gap-2"><span class="text-xl">⚡</span> Elektroauto</h3>
         <div class="space-y-3">
           <div>
             <label class="block text-xs text-stone-600 mb-1">Anschaffungspreis (€)</label>
             <input type="number" id="ev-price" value="42000" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
           </div>
           <div>
-            <label class="block text-xs text-stone-600 mb-1">
-              Verbrauch (kWh / 100 km)
-              <span class="help-icon" title="Realistischer Schnitt 2026: Kompaktklasse 16-18, Mittelklasse 18-22, SUV 20-25">?</span>
-            </label>
+            <label class="block text-xs text-stone-600 mb-1">Verbrauch (kWh / 100 km) <span class="help-icon" title="Realistischer Schnitt 2026: Kompaktklasse 16-18, Mittelklasse 18-22, SUV 20-25">?</span></label>
             <input type="number" id="ev-consumption" value="18" step="0.1" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
           </div>
           <div>
-            <label class="block text-xs text-stone-600 mb-1">
-              Strompreis (€ / kWh)
-              <span class="help-icon" title="Heimladen mit Spezialtarif ca. 0,28 €. Hauptstrom ca. 0,35-0,42 €. Öffentlich ca. 0,55-0,75 €.">?</span>
-            </label>
+            <label class="block text-xs text-stone-600 mb-1">Strompreis (€ / kWh) <span class="help-icon" title="Heimladen mit Spezialtarif ca. 0,28 €. Hauptstrom ca. 0,35-0,42 €. Öffentlich ca. 0,55-0,75 €.">?</span></label>
             <input type="number" id="ev-energy-price" value="0.40" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
           </div>
         </div>
       </div>
 
-      <!-- Verbrenner -->
       <div class="mb-6">
-        <h3 class="font-semibold ice-color mb-3 flex items-center gap-2">
-          <span class="text-xl">⛽</span> Verbrenner
-        </h3>
+        <h3 class="font-semibold ice-color mb-3 flex items-center gap-2"><span class="text-xl">⛽</span> Verbrenner</h3>
         <div class="space-y-3">
           <div>
             <label class="block text-xs text-stone-600 mb-1">Anschaffungspreis (€)</label>
@@ -180,17 +159,11 @@
         </div>
       </div>
 
-      <!-- Erweiterte Annahmen -->
       <details class="mt-4">
-        <summary class="text-sm accent font-medium hover:underline">
-          ▸ Erweiterte Annahmen anzeigen
-        </summary>
+        <summary class="text-sm accent font-medium hover:underline">▸ Erweiterte Annahmen anzeigen</summary>
         <div class="mt-4 space-y-3 pt-4 border-t border-stone-300">
           <div>
-            <label class="block text-xs text-stone-600 mb-1">
-              THG-Prämie pro Jahr (€)
-              <span class="help-icon" title="Aktuelle Garantieprämien 2026 liegen zwischen 110 und 330 € pro E-Auto und Jahr. Steuerfrei für Privatpersonen.">?</span>
-            </label>
+            <label class="block text-xs text-stone-600 mb-1">THG-Prämie pro Jahr (€) <span class="help-icon" title="Aktuelle Garantieprämien 2026 liegen zwischen 110 und 330 € pro E-Auto und Jahr. Steuerfrei für Privatpersonen.">?</span></label>
             <input type="number" id="thg" value="250" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
           </div>
           <div>
@@ -213,7 +186,6 @@
       </details>
     </div>
 
-    <!-- RESULTS -->
     <div class="space-y-4">
 
       <div class="bg-white border border-stone-200 rounded-lg p-6">
@@ -237,159 +209,82 @@
         </div>
       </div>
 
-      <!-- Visualisierung -->
       <div class="bg-white border border-stone-200 rounded-lg p-6">
         <h3 class="display font-semibold mb-4">Kosten-Verlauf über die Jahre</h3>
         <div id="chart" class="space-y-2 text-xs"></div>
         <p class="text-xs text-stone-500 mt-3" id="break-even-text"></p>
       </div>
 
-      <!-- Aufschlüsselung -->
       <div class="bg-white border border-stone-200 rounded-lg p-6">
         <h3 class="display font-semibold mb-4">Kosten-Aufschlüsselung</h3>
         <div id="breakdown" class="space-y-2 text-sm"></div>
       </div>
 
-      <!-- Affiliate-Platzhalter -->
       <div class="accent-soft rounded-lg p-5 border accent-border">
         <p class="text-xs uppercase tracking-wide accent font-semibold mb-2">💡 Geld sichern</p>
         <p class="text-sm leading-relaxed mb-3 text-stone-800">
           <strong>Du fährst bereits ein E-Auto?</strong> Dann hast du Anspruch auf die jährliche THG-Prämie.
           Anbieter zahlen aktuell zwischen 110 und 330 €. Vergleichen lohnt sich.
         </p>
-        <a href="#" class="inline-block accent-bg text-white px-4 py-2 rounded text-sm font-medium hover:opacity-90">
-          THG-Anbieter vergleichen →
-        </a>
+        <a href="#" class="inline-block accent-bg text-white px-4 py-2 rounded text-sm font-medium hover:opacity-90">THG-Anbieter vergleichen →</a>
         <p class="text-xs text-stone-500 mt-2">* Affiliate-Link (Platzhalter)</p>
       </div>
-
     </div>
   </div>
 
   <p class="text-xs text-stone-500 mt-8 max-w-3xl">
     Hinweis: Dieser Rechner liefert eine Schätzung auf Basis deiner Eingaben.
     Tatsächliche Kosten können je nach Fahrweise, Strom-/Spritpreisentwicklung,
-    individuellen Förderungen und Umständen abweichen. Keine Anlage-, Steuer- oder Kaufberatung.
-    Stand: 2026.
+    individuellen Förderungen und Umständen abweichen. Keine Anlage-, Steuer- oder Kaufberatung. Stand: 2026.
   </p>
 </section>
 
-<!-- Erklär-Sektion -->
 <section class="bg-white border-y border-stone-200 py-16">
   <div class="max-w-3xl mx-auto px-6">
     <p class="text-sm uppercase tracking-widest accent font-medium mb-4">Hintergrund</p>
     <h2 class="display text-3xl font-semibold mb-6">Wie wir rechnen — und was viele andere Rechner falsch machen</h2>
-
     <div class="prose prose-stone max-w-none space-y-4 text-stone-700 leading-relaxed">
-      <p>
-        Die meisten E-Auto-Rechner im Netz haben drei Probleme: Sie ignorieren die <strong>THG-Prämie</strong>
-        (für Privatleute steuerfrei, bis zu 330 €/Jahr), sie rechnen die <strong>Kfz-Steuer falsch</strong>
-        (E-Autos sind in Deutschland bis Ende 2030 steuerbefreit), und sie unterschätzen den
-        <strong>Wertverlust-Unterschied</strong>.
-      </p>
-
+      <p>Die meisten E-Auto-Rechner im Netz haben drei Probleme: Sie ignorieren die <strong>THG-Prämie</strong> (für Privatleute steuerfrei, bis zu 330 €/Jahr), sie rechnen die <strong>Kfz-Steuer falsch</strong> (E-Autos sind in Deutschland bis Ende 2030 steuerbefreit), und sie unterschätzen den <strong>Wertverlust-Unterschied</strong>.</p>
       <h3 class="display text-xl font-semibold pt-4">Die wichtigsten Posten im Detail</h3>
-
-      <p>
-        <strong>Energiekosten:</strong> Bei 18 kWh / 100 km und 0,40 € / kWh kostet dich ein E-Auto
-        rund 7,20 € pro 100 km. Ein Verbrenner mit 6,5 l und 1,75 €/Liter liegt bei 11,38 € — also rund 36% teurer.
-        Wer zu Hause an einer Wallbox mit Spezialtarif lädt (oft unter 0,30 €/kWh), spart noch deutlich mehr.
-      </p>
-
-      <p>
-        <strong>Kfz-Steuer:</strong> E-Autos sind in Deutschland bis 31.12.2030 von der Kfz-Steuer befreit.
-        Verbrenner zahlen nach Hubraum und CO₂-Ausstoß — bei einem Mittelklasse-Benziner sind das
-        oft 100–200 €/Jahr.
-      </p>
-
-      <p>
-        <strong>THG-Prämie:</strong> E-Autos sparen CO₂. Diese Einsparung verkaufen Anbieter wie Verivox,
-        Check24 oder geld-fuer-eauto an Mineralölkonzerne. Du bekommst pro Jahr und E-Auto aktuell zwischen
-        110 € und 330 € — steuerfrei für Privatpersonen. Hybride bekommen nichts.
-      </p>
-
-      <p>
-        <strong>Wartung:</strong> E-Autos haben deutlich weniger Verschleißteile (kein Ölwechsel, keine Zündkerzen,
-        weniger Bremsenverschleiß durch Rekuperation). Realistisch: 300–500 €/Jahr für E-Autos vs. 600–1.000 € für Verbrenner.
-      </p>
-
-      <p>
-        <strong>Wertverlust:</strong> Hier ist die Lage komplex. E-Autos verlieren in den ersten 1–2 Jahren stark
-        an Wert (typisch 20–25% allein im ersten Jahr), flachen dann aber ab. Verbrenner verlieren gleichmäßiger,
-        aber stetig. Die EU-Verbrenner-Diskussion könnte den Wertverlust junger Verbrenner ab 2030 beschleunigen.
-        Unser Rechner verwendet ein vereinfachtes lineares Modell — die Realität schwankt je nach Modell stark.
-      </p>
+      <p><strong>Energiekosten:</strong> Bei 18 kWh / 100 km und 0,40 € / kWh kostet dich ein E-Auto rund 7,20 € pro 100 km. Ein Verbrenner mit 6,5 l und 1,75 €/Liter liegt bei 11,38 € — also rund 36% teurer. Wer zu Hause an einer Wallbox mit Spezialtarif lädt (oft unter 0,30 €/kWh), spart noch deutlich mehr.</p>
+      <p><strong>Kfz-Steuer:</strong> E-Autos sind in Deutschland bis 31.12.2030 von der Kfz-Steuer befreit. Verbrenner zahlen nach Hubraum und CO₂-Ausstoß — bei einem Mittelklasse-Benziner sind das oft 100–200 €/Jahr.</p>
+      <p><strong>THG-Prämie:</strong> E-Autos sparen CO₂. Diese Einsparung verkaufen Anbieter wie Verivox, Check24 oder geld-fuer-eauto an Mineralölkonzerne. Du bekommst pro Jahr und E-Auto aktuell zwischen 110 € und 330 € — steuerfrei für Privatpersonen. Hybride bekommen nichts.</p>
+      <p><strong>Wartung:</strong> E-Autos haben deutlich weniger Verschleißteile (kein Ölwechsel, keine Zündkerzen, weniger Bremsenverschleiß durch Rekuperation). Realistisch: 300–500 €/Jahr für E-Autos vs. 600–1.000 € für Verbrenner.</p>
+      <p><strong>Wertverlust:</strong> Hier ist die Lage komplex. E-Autos verlieren in den ersten 1–2 Jahren stark an Wert (typisch 20–25% allein im ersten Jahr), flachen dann aber ab. Verbrenner verlieren gleichmäßiger, aber stetig. Die EU-Verbrenner-Diskussion könnte den Wertverlust junger Verbrenner ab 2030 beschleunigen. Unser Rechner verwendet ein vereinfachtes lineares Modell — die Realität schwankt je nach Modell stark.</p>
     </div>
   </div>
 </section>
 
-<!-- FAQ (gut für SEO) -->
 <section class="max-w-3xl mx-auto px-6 py-16">
   <p class="text-sm uppercase tracking-widest accent font-medium mb-4">FAQ</p>
   <h2 class="display text-3xl font-semibold mb-8">Häufige Fragen</h2>
-
   <div class="space-y-3">
     <details class="bg-white border border-stone-200 rounded-lg p-5">
-      <summary class="font-semibold flex justify-between items-center">
-        <span>Ab welcher Fahrleistung lohnt sich ein E-Auto?</span><span class="accent">+</span>
-      </summary>
-      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
-        Faustregel: Ab ca. 12.000 km/Jahr wird ein E-Auto in den meisten Konstellationen wirtschaftlicher als ein
-        vergleichbarer Verbrenner — vorausgesetzt du kannst zu Hause an einer Wallbox laden. Wer fast ausschließlich
-        an teuren öffentlichen Schnellladern lädt, braucht eine deutlich höhere Fahrleistung, damit es sich rechnet.
-      </p>
+      <summary class="font-semibold flex justify-between items-center"><span>Ab welcher Fahrleistung lohnt sich ein E-Auto?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Faustregel: Ab ca. 12.000 km/Jahr wird ein E-Auto in den meisten Konstellationen wirtschaftlicher als ein vergleichbarer Verbrenner — vorausgesetzt du kannst zu Hause an einer Wallbox laden. Wer fast ausschließlich an teuren öffentlichen Schnellladern lädt, braucht eine deutlich höhere Fahrleistung, damit es sich rechnet.</p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
-      <summary class="font-semibold flex justify-between items-center">
-        <span>Was ist die THG-Prämie und wie hoch ist sie?</span><span class="accent">+</span>
-      </summary>
-      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
-        Die Treibhausgasminderungsquote ist eine staatlich geregelte Prämie für E-Auto-Halter. Anbieter bündeln deine
-        CO₂-Einsparung und verkaufen sie an Mineralölkonzerne. Aktuelle Prämien 2026: zwischen 110 € und 330 € pro
-        Jahr und E-Auto. Für Privatpersonen vollständig steuerfrei.
-      </p>
+      <summary class="font-semibold flex justify-between items-center"><span>Was ist die THG-Prämie und wie hoch ist sie?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Die Treibhausgasminderungsquote ist eine staatlich geregelte Prämie für E-Auto-Halter. Anbieter bündeln deine CO₂-Einsparung und verkaufen sie an Mineralölkonzerne. Aktuelle Prämien 2026: zwischen 110 € und 330 € pro Jahr und E-Auto. Für Privatpersonen vollständig steuerfrei.</p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
-      <summary class="font-semibold flex justify-between items-center">
-        <span>Muss ich für ein E-Auto Kfz-Steuer zahlen?</span><span class="accent">+</span>
-      </summary>
-      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
-        Aktuell sind reine Elektroautos in Deutschland bis zum 31.12.2030 von der Kfz-Steuer befreit. Plug-in-Hybride
-        zahlen nach den normalen Regeln (Hubraum + CO₂). Für Bestandsfahrzeuge gilt: Erstzulassungen bis Ende 2025
-        sind 10 Jahre lang ab Erstzulassung steuerbefreit, längstens bis 31.12.2030.
-      </p>
+      <summary class="font-semibold flex justify-between items-center"><span>Muss ich für ein E-Auto Kfz-Steuer zahlen?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Aktuell sind reine Elektroautos in Deutschland bis zum 31.12.2030 von der Kfz-Steuer befreit. Plug-in-Hybride zahlen nach den normalen Regeln (Hubraum + CO₂). Für Bestandsfahrzeuge gilt: Erstzulassungen bis Ende 2025 sind 10 Jahre lang ab Erstzulassung steuerbefreit, längstens bis 31.12.2030.</p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
-      <summary class="font-semibold flex justify-between items-center">
-        <span>Was kostet eine Wallbox und gibt es Förderungen?</span><span class="accent">+</span>
-      </summary>
-      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
-        Eine Wallbox kostet je nach Modell 600–1.500 €, plus 800–2.500 € Installation. Die KfW-Förderung für
-        private Wallboxen ist seit 2021 ausgelaufen, einzelne Bundesländer und Kommunen bieten aber weiterhin
-        Zuschüsse. Auch manche Stromanbieter geben Rabatte oder kostenlose Installation bei Vertragsabschluss.
-      </p>
+      <summary class="font-semibold flex justify-between items-center"><span>Was kostet eine Wallbox und gibt es Förderungen?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Eine Wallbox kostet je nach Modell 600–1.500 €, plus 800–2.500 € Installation. Die KfW-Förderung für private Wallboxen ist seit 2021 ausgelaufen, einzelne Bundesländer und Kommunen bieten aber weiterhin Zuschüsse. Auch manche Stromanbieter geben Rabatte oder kostenlose Installation bei Vertragsabschluss.</p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
-      <summary class="font-semibold flex justify-between items-center">
-        <span>Wie schnell verliert ein E-Auto an Wert?</span><span class="accent">+</span>
-      </summary>
-      <p class="mt-3 text-stone-700 leading-relaxed text-sm">
-        Im ersten Jahr verlieren E-Autos oft 20–25% des Listenpreises, danach flacht es ab. Über 5 Jahre sind 45–55%
-        Wertverlust typisch. Wichtige Faktoren: Akkugesundheit (SOH), Modellzyklus des Herstellers, Reichweiten-Updates
-        bei Konkurrenzmodellen. Modelle mit hoher Nachfrage (z.B. Tesla Model Y) halten den Wert besser.
-      </p>
+      <summary class="font-semibold flex justify-between items-center"><span>Wie schnell verliert ein E-Auto an Wert?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Im ersten Jahr verlieren E-Autos oft 20–25% des Listenpreises, danach flacht es ab. Über 5 Jahre sind 45–55% Wertverlust typisch. Wichtige Faktoren: Akkugesundheit (SOH), Modellzyklus des Herstellers, Reichweiten-Updates bei Konkurrenzmodellen. Modelle mit hoher Nachfrage (z.B. Tesla Model Y) halten den Wert besser.</p>
     </details>
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="border-t border-stone-200 bg-white">
   <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-stone-500 flex flex-col md:flex-row justify-between gap-4">
-    <p>© 2026 AutoKosten.de – Demo-Version</p>
+    <p>© 2026 Klarrechner.de</p>
     <div class="flex gap-6">
       <a href="#">Impressum</a>
       <a href="#">Datenschutz</a>
@@ -399,7 +294,6 @@
 </footer>
 
 <script>
-  // Beispiel-Profile
   const profiles = {
     pendler:    { km: 20000, 'ev-price': 42000, 'ev-consumption': 17, 'ev-energy-price': 0.35, 'ice-price': 32000, 'ice-consumption': 6, 'ice-energy-price': 1.75, 'ice-hubraum': 1500, 'ice-co2': 125, 'ice-fuel': 'diesel' },
     stadt:      { km: 8000,  'ev-price': 35000, 'ev-consumption': 16, 'ev-energy-price': 0.42, 'ice-price': 25000, 'ice-consumption': 7, 'ice-energy-price': 1.78, 'ice-hubraum': 1200, 'ice-co2': 130, 'ice-fuel': 'benzin' },
@@ -410,10 +304,7 @@
   document.querySelectorAll('[data-profile]').forEach(btn => {
     btn.addEventListener('click', () => {
       const profile = profiles[btn.dataset.profile];
-      Object.entries(profile).forEach(([k,v]) => {
-        const el = document.getElementById(k);
-        if (el) el.value = v;
-      });
+      Object.entries(profile).forEach(([k,v]) => { const el = document.getElementById(k); if (el) el.value = v; });
       document.querySelectorAll('[data-profile]').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       calculate();
@@ -425,14 +316,12 @@
   const v = (id) => parseFloat(document.getElementById(id).value) || 0;
   const sv = (id) => document.getElementById(id).value;
 
-  // Vereinfachte Kfz-Steuer-Berechnung Deutschland
   function kfzSteuer(hubraum, co2, fuel) {
     const grundbetrag = (fuel === 'diesel' ? 9.50 : 2.00) * (hubraum / 100);
     const co2Frei = 95;
     let co2Anteil = 0;
     if (co2 > co2Frei) {
       const ueber = co2 - co2Frei;
-      // Vereinfachte Staffelung
       if (ueber <= 20) co2Anteil = ueber * 2;
       else if (ueber <= 40) co2Anteil = 40 + (ueber - 20) * 2.20;
       else if (ueber <= 60) co2Anteil = 84 + (ueber - 40) * 2.50;
@@ -448,16 +337,14 @@
     const years = v('years');
     document.getElementById('years-display').textContent = years + (years === 1 ? ' Jahr' : ' Jahre');
 
-    // E-Auto
     const evEnergy = (v('ev-consumption') / 100) * km * v('ev-energy-price') * years;
     const evMaint = v('ev-maintenance') * years;
     const evIns = v('ev-insurance') * years;
     const evDeprec = v('ev-price') * 0.50 * Math.min(years/5, 1) + v('ev-price') * 0.05 * Math.max(years - 5, 0);
-    const evThg = -v('thg') * years; // negativ = Einnahme
-    const evSteuer = 0; // bis 2030 steuerfrei
+    const evThg = -v('thg') * years;
+    const evSteuer = 0;
     const evTotal = evEnergy + evMaint + evIns + evDeprec + evThg + evSteuer;
 
-    // Verbrenner
     const iceEnergy = (v('ice-consumption') / 100) * km * v('ice-energy-price') * years;
     const iceMaint = v('ice-maintenance') * years;
     const iceIns = v('ice-insurance') * years;
@@ -484,7 +371,6 @@
       savings.textContent = 'Beide Optionen kosten dich gleich viel.';
     }
 
-    // Aufschlüsselung
     const breakdown = document.getElementById('breakdown');
     breakdown.innerHTML = `
       <div class="grid grid-cols-3 gap-2 text-xs uppercase tracking-wide text-stone-500 font-semibold pb-2 border-b border-stone-200">
@@ -502,8 +388,6 @@
         <div class="text-right">${fmt(iceTotal)}</div>
       </div>
     `;
-
-    // Chart - Jahresweise Kostenentwicklung
     drawChart(km);
   }
 
@@ -511,11 +395,7 @@
     const cheaper = a < b ? 'text-emerald-700 font-medium' : '';
     const cheaperB = b < a ? 'text-emerald-700 font-medium' : '';
     const aDisplay = (isIncome && a < 0) ? `−${fmt(Math.abs(a))}` : fmt(a);
-    return `<div class="grid grid-cols-3 gap-2">
-      <div class="text-stone-600">${label}</div>
-      <div class="text-right ${cheaper}">${aDisplay}</div>
-      <div class="text-right ${cheaperB}">${fmt(b)}</div>
-    </div>`;
+    return `<div class="grid grid-cols-3 gap-2"><div class="text-stone-600">${label}</div><div class="text-right ${cheaper}">${aDisplay}</div><div class="text-right ${cheaperB}">${fmt(b)}</div></div>`;
   }
 
   function drawChart(km) {
@@ -523,47 +403,19 @@
     const breakEvenText = document.getElementById('break-even-text');
     const maxYears = 10;
     let breakEvenYear = null;
-
     let html = '';
     for (let y = 1; y <= maxYears; y++) {
-      // Berechne kumuliert
-      const evY = (v('ev-consumption')/100) * km * v('ev-energy-price') * y
-                + v('ev-maintenance') * y + v('ev-insurance') * y
-                + v('ev-price') * 0.50 * Math.min(y/5, 1) + v('ev-price') * 0.05 * Math.max(y-5, 0)
-                - v('thg') * y;
-      const iceY = (v('ice-consumption')/100) * km * v('ice-energy-price') * y
-                + v('ice-maintenance') * y + v('ice-insurance') * y
-                + v('ice-price') * 0.45 * Math.min(y/5, 1) + v('ice-price') * 0.06 * Math.max(y-5, 0)
-                + kfzSteuer(v('ice-hubraum'), v('ice-co2'), sv('ice-fuel')) * y;
-
+      const evY = (v('ev-consumption')/100) * km * v('ev-energy-price') * y + v('ev-maintenance') * y + v('ev-insurance') * y + v('ev-price') * 0.50 * Math.min(y/5, 1) + v('ev-price') * 0.05 * Math.max(y-5, 0) - v('thg') * y;
+      const iceY = (v('ice-consumption')/100) * km * v('ice-energy-price') * y + v('ice-maintenance') * y + v('ice-insurance') * y + v('ice-price') * 0.45 * Math.min(y/5, 1) + v('ice-price') * 0.06 * Math.max(y-5, 0) + kfzSteuer(v('ice-hubraum'), v('ice-co2'), sv('ice-fuel')) * y;
       if (breakEvenYear === null && evY < iceY) breakEvenYear = y;
-
       const max = Math.max(evY, iceY);
       const evW = (evY / max) * 100;
       const iceW = (iceY / max) * 100;
-
-      html += `
-        <div class="grid grid-cols-12 gap-2 items-center">
-          <div class="col-span-1 text-stone-500">J${y}</div>
-          <div class="col-span-11">
-            <div class="flex items-center gap-1 mb-0.5">
-              <div class="chart-bar accent-bg h-3 rounded-sm" style="width:${evW}%"></div>
-              <span class="text-stone-600 text-xs">${fmt(evY)}</span>
-            </div>
-            <div class="flex items-center gap-1">
-              <div class="chart-bar h-3 rounded-sm" style="width:${iceW}%; background:#B45309"></div>
-              <span class="text-stone-600 text-xs">${fmt(iceY)}</span>
-            </div>
-          </div>
-        </div>`;
+      html += `<div class="grid grid-cols-12 gap-2 items-center"><div class="col-span-1 text-stone-500">J${y}</div><div class="col-span-11"><div class="flex items-center gap-1 mb-0.5"><div class="chart-bar accent-bg h-3 rounded-sm" style="width:${evW}%"></div><span class="text-stone-600 text-xs">${fmt(evY)}</span></div><div class="flex items-center gap-1"><div class="chart-bar h-3 rounded-sm" style="width:${iceW}%; background:#B45309"></div><span class="text-stone-600 text-xs">${fmt(iceY)}</span></div></div></div>`;
     }
     chart.innerHTML = html;
-
-    if (breakEvenYear) {
-      breakEvenText.innerHTML = `<strong class="accent">Break-even:</strong> Ab dem ${breakEvenYear}. Jahr ist das E-Auto günstiger als der Verbrenner.`;
-    } else {
-      breakEvenText.innerHTML = `<strong class="ice-color">Hinweis:</strong> Bei diesen Annahmen bleibt der Verbrenner über 10 Jahre günstiger.`;
-    }
+    if (breakEvenYear) breakEvenText.innerHTML = `<strong class="accent">Break-even:</strong> Ab dem ${breakEvenYear}. Jahr ist das E-Auto günstiger als der Verbrenner.`;
+    else breakEvenText.innerHTML = `<strong class="ice-color">Hinweis:</strong> Bei diesen Annahmen bleibt der Verbrenner über 10 Jahre günstiger.`;
   }
 
   const ids = ['km','years','ev-price','ev-consumption','ev-energy-price','ice-price','ice-consumption','ice-energy-price','ice-hubraum','ice-co2','ice-fuel','ev-maintenance','ice-maintenance','ev-insurance','ice-insurance','thg'];

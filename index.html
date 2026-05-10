@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AutoKosten.de – E-Auto, Wallbox & Mobilitätskosten transparent berechnen</title>
+<title>Klarrechner.de – E-Auto, Wallbox & Mobilitätskosten transparent berechnen</title>
 <meta name="description" content="Unabhängige Rechner und Ratgeber rund um Auto-Kosten in Deutschland. Lohnt sich ein E-Auto? Was kostet eine Wallbox? Aktuelle Daten 2026, ohne Anmeldung." />
-<meta name="keywords" content="Auto Kosten Rechner, E-Auto vs Verbrenner, Wallbox Kosten, THG-Prämie, Kfz-Steuer 2026" />
-<meta property="og:title" content="AutoKosten.de – Mobilität transparent berechnen" />
+<meta name="keywords" content="Auto Kosten Rechner, E-Auto vs Verbrenner, Wallbox Kosten, THG-Prämie, Kfz-Steuer 2026, Klarrechner" />
+<meta property="og:title" content="Klarrechner.de – Mobilität transparent berechnen" />
 <meta property="og:description" content="Unabhängige Rechner für E-Auto, Wallbox und Auto-Kosten." />
 <meta property="og:type" content="website" />
 
@@ -19,14 +19,9 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "AutoKosten.de",
-  "url": "https://autokosten.de",
-  "description": "Unabhängige Rechner und Ratgeber rund um Auto-Kosten in Deutschland",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://autokosten.de/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "name": "Klarrechner.de",
+  "url": "https://klarrechner.de",
+  "description": "Unabhängige Rechner und Ratgeber rund um Auto-Kosten in Deutschland"
 }
 </script>
 
@@ -40,8 +35,6 @@
   .warm-bg { background: #F4EFE6; }
   .ice-color { color: #B45309; }
   .ice-bg { background: #FEF3E2; }
-
-  /* Hero gradient subtil */
   .hero-bg {
     background: linear-gradient(135deg, #FAF8F4 0%, #F4EFE6 100%);
     position: relative;
@@ -57,25 +50,19 @@
     background: radial-gradient(circle, rgba(45, 90, 61, 0.04) 0%, transparent 70%);
     pointer-events: none;
   }
-
   details summary::-webkit-details-marker { display: none; }
   details summary { cursor: pointer; list-style: none; }
-
   .tool-card { transition: all 0.25s ease; }
   .tool-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-
   .article-card { transition: all 0.2s ease; }
   .article-card:hover { transform: translateY(-2px); }
-
   .arrow-link { transition: gap 0.2s ease; }
   .arrow-link:hover { gap: 0.75rem; }
-
   input[type="email"]:focus { outline: 2px solid #2D5A3D; outline-offset: 2px; }
 </style>
 </head>
 <body>
 
-<!-- Top Bar -->
 <div class="bg-stone-900 text-white text-xs">
   <div class="max-w-6xl mx-auto px-6 py-2 flex justify-between items-center">
     <span>🌱 Stand: 2026 · Daten regelmäßig aktualisiert</span>
@@ -83,12 +70,16 @@
   </div>
 </div>
 
-<!-- Header -->
 <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2">
-      <div class="w-9 h-9 accent-bg rounded-sm flex items-center justify-center text-white font-bold">A</div>
-      <span class="display font-semibold text-xl">AutoKosten<span class="accent">.de</span></span>
+    <a href="index.html" class="flex items-center gap-2">
+      <svg viewBox="0 0 36 36" class="w-9 h-9" aria-label="Klarrechner Logo">
+        <rect x="6" y="22" width="5" height="8" rx="1" fill="#2D5A3D" opacity="0.3"/>
+        <rect x="13" y="16" width="5" height="14" rx="1" fill="#2D5A3D" opacity="0.55"/>
+        <rect x="20" y="10" width="5" height="20" rx="1" fill="#2D5A3D" opacity="0.8"/>
+        <rect x="27" y="6" width="5" height="24" rx="1" fill="#2D5A3D"/>
+      </svg>
+      <span class="display font-semibold text-xl">Klar<span class="accent">rechner</span>.de</span>
     </a>
     <nav class="hidden md:flex gap-8 text-sm text-stone-600 font-medium">
       <a href="e-auto-rechner-v2.html" class="hover:accent">E-Auto Rechner</a>
@@ -103,7 +94,6 @@
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero-bg">
   <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 relative">
     <div class="max-w-3xl">
@@ -123,8 +113,6 @@
           🔌 Wallbox-Kosten checken
         </a>
       </div>
-
-      <!-- Trust-Zeile -->
       <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-stone-600">
         <span class="flex items-center gap-2">✓ Kostenlos & ohne Anmeldung</span>
         <span class="flex items-center gap-2">✓ Aktuelle Daten 2026</span>
@@ -135,7 +123,6 @@
   </div>
 </section>
 
-<!-- TOOLS -->
 <section id="tools" class="max-w-6xl mx-auto px-6 py-20">
   <div class="max-w-2xl mb-12">
     <p class="text-sm uppercase tracking-widest accent font-semibold mb-3">Unsere Rechner</p>
@@ -144,10 +131,7 @@
       Alle Tools mit aktuellen Werten 2026 — Strompreise, Spritpreise, THG-Prämien, Förderungen.
     </p>
   </div>
-
   <div class="grid md:grid-cols-2 gap-6">
-
-    <!-- Tool 1: E-Auto -->
     <a href="e-auto-rechner-v2.html" class="tool-card group bg-white border border-stone-200 rounded-lg p-8 block">
       <div class="flex items-start justify-between mb-6">
         <div class="text-4xl">⚡</div>
@@ -167,8 +151,6 @@
         Rechner öffnen <span>→</span>
       </span>
     </a>
-
-    <!-- Tool 2: Wallbox -->
     <a href="wallbox-rechner.html" class="tool-card group bg-white border border-stone-200 rounded-lg p-8 block">
       <div class="flex items-start justify-between mb-6">
         <div class="text-4xl">🔌</div>
@@ -188,8 +170,6 @@
         Rechner öffnen <span>→</span>
       </span>
     </a>
-
-    <!-- Tool 3: Coming Soon -->
     <div class="tool-card bg-stone-50 border-2 border-dashed border-stone-300 rounded-lg p-8 opacity-75">
       <div class="text-4xl mb-6">🅿️</div>
       <h3 class="display text-2xl font-semibold mb-3 text-stone-700">THG-Prämien-Vergleich</h3>
@@ -198,8 +178,6 @@
       </p>
       <span class="text-xs uppercase tracking-wide bg-stone-200 text-stone-600 px-3 py-1 rounded-full font-semibold">In Arbeit</span>
     </div>
-
-    <!-- Tool 4: Coming Soon -->
     <div class="tool-card bg-stone-50 border-2 border-dashed border-stone-300 rounded-lg p-8 opacity-75">
       <div class="text-4xl mb-6">📋</div>
       <h3 class="display text-2xl font-semibold mb-3 text-stone-700">Leasing vs. Kauf</h3>
@@ -211,14 +189,12 @@
   </div>
 </section>
 
-<!-- TRUST -->
 <section class="bg-white border-y border-stone-200 py-20">
   <div class="max-w-6xl mx-auto px-6">
     <div class="max-w-2xl mb-12">
-      <p class="text-sm uppercase tracking-widest accent font-semibold mb-3">Warum AutoKosten.de</p>
+      <p class="text-sm uppercase tracking-widest accent font-semibold mb-3">Warum Klarrechner.de</p>
       <h2 class="display text-4xl font-semibold mb-4">Drei Versprechen, an die wir uns halten</h2>
     </div>
-
     <div class="grid md:grid-cols-3 gap-8">
       <div>
         <div class="w-12 h-12 accent-soft accent rounded-md flex items-center justify-center text-2xl mb-4">🎯</div>
@@ -228,7 +204,6 @@
           dann transparent — Affiliate-Links sind klar gekennzeichnet, alle Rechner funktionieren ohne Anmeldung.
         </p>
       </div>
-
       <div>
         <div class="w-12 h-12 accent-soft accent rounded-md flex items-center justify-center text-2xl mb-4">📅</div>
         <h3 class="display text-xl font-semibold mb-3">Aktuelle Daten 2026</h3>
@@ -237,7 +212,6 @@
           unsere Werte regelmäßig und nennen die Quellen — damit du dich auf die Zahlen verlassen kannst.
         </p>
       </div>
-
       <div>
         <div class="w-12 h-12 accent-soft accent rounded-md flex items-center justify-center text-2xl mb-4">🔒</div>
         <h3 class="display text-xl font-semibold mb-3">Keine Datensammlung</h3>
@@ -250,7 +224,6 @@
   </div>
 </section>
 
-<!-- ARTIKEL-VORSCHAU -->
 <section class="max-w-6xl mx-auto px-6 py-20">
   <div class="flex justify-between items-end mb-12 flex-wrap gap-4">
     <div class="max-w-2xl">
@@ -261,7 +234,6 @@
       Alle Artikel <span>→</span>
     </a>
   </div>
-
   <div class="grid md:grid-cols-3 gap-6">
     <article class="article-card bg-white border border-stone-200 rounded-lg overflow-hidden">
       <div class="h-40 ice-bg flex items-center justify-center text-5xl">⛽</div>
@@ -278,7 +250,6 @@
         </span>
       </div>
     </article>
-
     <article class="article-card bg-white border border-stone-200 rounded-lg overflow-hidden">
       <div class="h-40 accent-soft flex items-center justify-center text-5xl">⚡</div>
       <div class="p-6">
@@ -294,7 +265,6 @@
         </span>
       </div>
     </article>
-
     <article class="article-card bg-white border border-stone-200 rounded-lg overflow-hidden">
       <div class="h-40 warm-bg flex items-center justify-center text-5xl">🅿️</div>
       <div class="p-6">
@@ -313,7 +283,6 @@
   </div>
 </section>
 
-<!-- THG-AFFILIATE-BLOCK -->
 <section class="bg-stone-900 text-white py-20">
   <div class="max-w-4xl mx-auto px-6">
     <div class="grid md:grid-cols-3 gap-8 items-center">
@@ -339,13 +308,11 @@
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="max-w-3xl mx-auto px-6 py-20">
   <div class="mb-12">
     <p class="text-sm uppercase tracking-widest accent font-semibold mb-3">Häufige Fragen</p>
     <h2 class="display text-4xl font-semibold">Bevor du loslegst</h2>
   </div>
-
   <div class="space-y-3">
     <details class="bg-white border border-stone-200 rounded-lg p-5">
       <summary class="font-semibold flex justify-between items-center">
@@ -357,7 +324,6 @@
         Du zahlst dabei nichts mehr — die Anbieter geben uns einen Teil der Marketingkosten ab.
       </p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
       <summary class="font-semibold flex justify-between items-center">
         <span>Wie aktuell sind die Werte in den Rechnern?</span><span class="accent">+</span>
@@ -369,7 +335,6 @@
         keine verbindliche Prognose.
       </p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
       <summary class="font-semibold flex justify-between items-center">
         <span>Werden meine Daten gespeichert oder weitergegeben?</span><span class="accent">+</span>
@@ -380,7 +345,6 @@
         Affiliate-Link klickst, gilt die Datenschutzerklärung des jeweiligen Anbieters.
       </p>
     </details>
-
     <details class="bg-white border border-stone-200 rounded-lg p-5">
       <summary class="font-semibold flex justify-between items-center">
         <span>Kann ich euch Themen oder Korrekturen vorschlagen?</span><span class="accent">+</span>
@@ -393,7 +357,6 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
 <section class="warm-bg py-20">
   <div class="max-w-2xl mx-auto px-6 text-center">
     <p class="text-sm uppercase tracking-widest accent font-semibold mb-3">Newsletter</p>
@@ -414,21 +377,23 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="bg-stone-900 text-stone-400 py-12">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid md:grid-cols-4 gap-8 mb-8">
-
       <div>
         <div class="flex items-center gap-2 mb-4">
-          <div class="w-8 h-8 accent-bg rounded-sm flex items-center justify-center text-white font-bold">A</div>
-          <span class="display font-semibold text-lg text-white">AutoKosten<span class="accent">.de</span></span>
+          <svg viewBox="0 0 36 36" class="w-8 h-8" aria-label="Klarrechner Logo">
+            <rect x="6" y="22" width="5" height="8" rx="1" fill="#2D5A3D" opacity="0.4"/>
+            <rect x="13" y="16" width="5" height="14" rx="1" fill="#2D5A3D" opacity="0.6"/>
+            <rect x="20" y="10" width="5" height="20" rx="1" fill="#2D5A3D" opacity="0.85"/>
+            <rect x="27" y="6" width="5" height="24" rx="1" fill="#2D5A3D"/>
+          </svg>
+          <span class="display font-semibold text-lg text-white">Klar<span class="accent">rechner</span>.de</span>
         </div>
         <p class="text-sm leading-relaxed">
           Unabhängige Rechner & Ratgeber rund um Auto-Kosten in Deutschland.
         </p>
       </div>
-
       <div>
         <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Rechner</h4>
         <ul class="space-y-2 text-sm">
@@ -438,7 +403,6 @@
           <li><a href="#" class="hover:text-white">Kfz-Steuer</a></li>
         </ul>
       </div>
-
       <div>
         <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Ratgeber</h4>
         <ul class="space-y-2 text-sm">
@@ -448,7 +412,6 @@
           <li><a href="#" class="hover:text-white">Steuern & Recht</a></li>
         </ul>
       </div>
-
       <div>
         <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Rechtliches</h4>
         <ul class="space-y-2 text-sm">
@@ -459,9 +422,8 @@
         </ul>
       </div>
     </div>
-
     <div class="border-t border-stone-800 pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs">
-      <p>© 2026 AutoKosten.de — Alle Angaben ohne Gewähr. Keine Steuer-, Rechts- oder Anlageberatung.</p>
+      <p>© 2026 Klarrechner.de — Alle Angaben ohne Gewähr. Keine Steuer-, Rechts- oder Anlageberatung.</p>
       <p>Made with care in Deutschland 🇩🇪</p>
     </div>
   </div>
