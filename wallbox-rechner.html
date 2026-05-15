@@ -410,5 +410,35 @@
   calculate();
 </script>
 
+<!-- Cookie/Datenschutz-Hinweis Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+  <div class="max-w-5xl mx-auto m-4 bg-white border border-stone-200 rounded-lg shadow-lg p-5">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+      <p class="text-sm text-stone-700 leading-relaxed">
+        🍪 Diese Website verwendet <strong>keine Tracking-Cookies</strong> und keine Analyse-Tools.
+        Alle Berechnungen laufen lokal in deinem Browser. Mehr in der
+        <a href="datenschutz.html" class="accent underline">Datenschutzerklärung</a>.
+      </p>
+      <button id="cookie-accept" class="accent-bg text-white px-5 py-2 rounded-md text-sm font-medium hover:opacity-90 whitespace-nowrap">
+        Verstanden
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var banner = document.getElementById("cookie-banner");
+    var accept = document.getElementById("cookie-accept");
+    if (!localStorage.getItem("klarrechner-banner-seen")) {
+      banner.classList.remove("hidden");
+    }
+    accept.addEventListener("click", function() {
+      localStorage.setItem("klarrechner-banner-seen", "1");
+      banner.classList.add("hidden");
+    });
+  })();
+</script>
+
 </body>
 </html>

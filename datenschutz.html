@@ -111,11 +111,19 @@
     </section>
 
     <section>
-      <h2 class="display text-2xl font-semibold mb-3">5. Cookies</h2>
+      <h2 class="display text-2xl font-semibold mb-3">5. Cookies und Browser-Speicher</h2>
       <p>
         Wir setzen auf Klarrechner.de <strong>keine eigenen Tracking-Cookies oder Analyse-Cookies</strong>
         ein. Sollten zu einem späteren Zeitpunkt Cookies eingesetzt werden (z.&nbsp;B. für Statistik oder
         Werbung), werden wir dich vorab über ein Cookie-Banner um deine Einwilligung bitten.
+      </p>
+      <p class="mt-3">
+        Beim ersten Besuch unserer Website siehst du einen kurzen Hinweis-Banner zum Datenschutz. Wenn
+        du auf "Verstanden" klickst, speichern wir diese Information ausschließlich lokal in deinem
+        Browser über den sogenannten "localStorage" (Schlüssel: <code>klarrechner-banner-seen</code>),
+        damit der Hinweis nicht bei jedem Besuch erneut erscheint. Diese Speicherung erfolgt ausschließlich
+        auf deinem Gerät — wir erhalten oder verarbeiten dabei keine Daten. Du kannst den localStorage
+        jederzeit in den Einstellungen deines Browsers löschen.
       </p>
     </section>
 
@@ -209,6 +217,36 @@
     </div>
   </div>
 </footer>
+
+<!-- Cookie/Datenschutz-Hinweis Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+  <div class="max-w-5xl mx-auto m-4 bg-white border border-stone-200 rounded-lg shadow-lg p-5">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+      <p class="text-sm text-stone-700 leading-relaxed">
+        🍪 Diese Website verwendet <strong>keine Tracking-Cookies</strong> und keine Analyse-Tools.
+        Alle Berechnungen laufen lokal in deinem Browser. Mehr in der
+        <a href="datenschutz.html" class="accent underline">Datenschutzerklärung</a>.
+      </p>
+      <button id="cookie-accept" class="accent-bg text-white px-5 py-2 rounded-md text-sm font-medium hover:opacity-90 whitespace-nowrap">
+        Verstanden
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var banner = document.getElementById("cookie-banner");
+    var accept = document.getElementById("cookie-accept");
+    if (!localStorage.getItem("klarrechner-banner-seen")) {
+      banner.classList.remove("hidden");
+    }
+    accept.addEventListener("click", function() {
+      localStorage.setItem("klarrechner-banner-seen", "1");
+      banner.classList.add("hidden");
+    });
+  })();
+</script>
 
 </body>
 </html>
