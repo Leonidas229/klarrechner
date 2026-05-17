@@ -51,6 +51,13 @@
 </head>
 <body>
 
+<div class="bg-stone-900 text-white text-xs">
+  <div class="max-w-6xl mx-auto px-6 py-2 flex justify-between items-center">
+    <span>🌱 Stand: 2026 · Daten regelmäßig aktualisiert</span>
+    <span class="hidden md:inline">⚡ Unabhängig, transparent, ohne Anmeldung</span>
+  </div>
+</div>
+
 <header class="border-b border-stone-200 bg-white">
   <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-2">
@@ -119,12 +126,12 @@
       <h3 class="font-semibold mb-3 flex items-center gap-2"><span class="text-xl">🔌</span> Hardware</h3>
       <div class="space-y-3 mb-6">
         <div>
-          <label class="block text-xs text-stone-600 mb-1">Wallbox-Modell <span class="help-icon" title="Einsteiger: 11 kW ohne Smart-Funktionen. Standard: mit App, MID-Zähler. Premium: PV-Steuerung, Lastmanagement, Bidirektional.">?</span></label>
+          <label class="block text-xs text-stone-600 mb-1">Wallbox-Modell <span class="help-icon" title="Einsteiger: 11 kW ohne Smart-Funktionen (z.B. ABL eMH1). Standard: mit App, MID-Zähler (go-e, Heidelberg). Premium: PV-Steuerung, Lastmanagement (Easee, KEBA). Marktpreise 2026.">?</span></label>
           <select id="hardware" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm">
-            <option value="500">Einsteiger 11 kW (~500 €)</option>
-            <option value="900" selected>Standard 11 kW mit App (~900 €)</option>
-            <option value="1500">Premium 11 kW mit PV-Steuerung (~1.500 €)</option>
-            <option value="2500">22 kW + Smart-Features (~2.500 €)</option>
+            <option value="400">Einsteiger 11 kW (~400 €)</option>
+            <option value="750" selected>Standard 11 kW mit App (~750 €)</option>
+            <option value="1300">Premium 11 kW mit PV-Steuerung (~1.300 €)</option>
+            <option value="2200">22 kW + Smart-Features (~2.200 €)</option>
             <option value="custom">Eigener Preis…</option>
           </select>
           <input type="number" id="hardware-custom" placeholder="Preis in €" class="hidden mt-2 w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
@@ -134,7 +141,7 @@
           <input type="number" id="installation" value="1000" step="50" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
         </div>
         <div>
-          <label class="block text-xs text-stone-600 mb-1">Zusatzkosten (FI-Schalter, Zählertausch etc.) (€) <span class="help-icon" title="FI-Schalter Typ A 150-400 €. Separater Zähler für Dienstwagen 200-400 €. Nur ergänzen wenn nötig.">?</span></label>
+          <label class="block text-xs text-stone-600 mb-1">Zusatzkosten (FI-Schalter, Zählertausch etc.) (€) <span class="help-icon" title="FI-Schalter Typ A 150-400 €. Separater MID-Zähler für Dienstwagen-Abrechnung 200-400 € — seit 01.01.2026 Pflicht für die steuerfreie Stromkosten-Erstattung durch den Arbeitgeber. Nur ergänzen wenn nötig.">?</span></label>
           <input type="number" id="extras" value="200" step="50" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
         </div>
       </div>
@@ -181,14 +188,14 @@
           <input type="checkbox" id="tax" class="w-4 h-4" checked />
           <div class="flex-1">
             <p class="text-sm font-medium">Haushaltsnahe Dienstleistung absetzen</p>
-            <p class="text-xs text-stone-500">20% der Installation als Steuerersparnis (max. 1.200 €)</p>
+            <p class="text-xs text-stone-500">20% der Arbeitskosten (Schätzung: 70% der Installation), max. 1.200 € Ersparnis. Rechnung muss überwiesen sein, keine Barzahlung.</p>
           </div>
         </label>
         <label class="flex items-center gap-3 p-3 bg-white border border-stone-200 rounded-md cursor-pointer">
           <input type="checkbox" id="thg" class="w-4 h-4" checked />
           <div class="flex-1">
             <p class="text-sm font-medium">THG-Prämie nutzen</p>
-            <p class="text-xs text-stone-500">~250 € pro Jahr für E-Auto-Halter (steuerfrei)</p>
+            <p class="text-xs text-stone-500">200–330 € pro Jahr für E-Auto-Halter, steuerfrei für Privatpersonen. Mehr zu Steuervorteilen: <a href="steuervorteile-e-auto-2026.html" class="accent underline">Steuer-Ratgeber 2026</a></p>
           </div>
         </label>
       </div>
@@ -228,11 +235,8 @@
       </div>
 
       <div class="bg-stone-900 text-white rounded-lg p-5">
-        <p class="text-xs uppercase tracking-wide text-stone-400 mb-2">💡 Tipp</p>
-        <p class="text-sm leading-relaxed mb-3">Hol dir <strong>3 Angebote</strong> von Elektrikern in deiner Region. Die Preise variieren stark — oft 500-1.000 € Unterschied bei gleicher Leistung.</p>
-        <span class="inline-block bg-stone-700 text-stone-300 px-4 py-2 rounded text-sm font-medium">
-          🔔 Elektriker-Vergleich folgt in Kürze
-        </span>
+        <p class="text-xs uppercase tracking-wide text-stone-400 mb-2">💡 Klarrechner-Tipp</p>
+        <p class="text-sm leading-relaxed mb-3">Hol dir <strong>3 Angebote</strong> von Elektrikern in deiner Region — die Preise variieren stark, oft 500-1.000 € Unterschied bei gleicher Leistung. Wichtig: Achte darauf, dass die Anmeldung beim Netzbetreiber im Angebot enthalten ist (Pflicht seit § 14a EnWG).</p>
       </div>
     </div>
   </div>
@@ -251,13 +255,37 @@
     <div class="prose prose-stone max-w-none space-y-4 text-stone-700 leading-relaxed">
       <p>Eine Heim-Wallbox ist 2026 für die meisten E-Auto-Fahrer die mit Abstand günstigste Lade-Option. Aber die Gesamtkosten variieren stark — zwischen <strong>1.000 € und 5.500 €</strong>, je nach Wallbox-Modell, Wohnsituation und Installationsaufwand.</p>
       <h3 class="display text-xl font-semibold pt-4">Die drei Hauptkostenblöcke</h3>
-      <p><strong>1. Hardware (300–2.500 €):</strong> Eine 11-kW-Wallbox ohne Smart-Funktionen gibt es ab ca. 300 €. Standardmodelle mit App-Steuerung und MID-Zähler (für Dienstwagen-Abrechnung) liegen bei 700–1.200 €. Premium-Modelle mit PV-Überschussladen, dynamischem Lastmanagement oder bidirektionalem Laden (V2H/V2G) kosten 1.500–2.500 €.</p>
+      <p><strong>1. Hardware (300–2.500 €):</strong> Eine 11-kW-Wallbox ohne Smart-Funktionen gibt es ab ca. 300 € (z.&nbsp;B. ABL eMH1, ADAC-bewährt). Standardmodelle mit App-Steuerung und MID-Zähler (für Dienstwagen-Abrechnung) liegen bei 600–900 € — go-e Charger ab 400 €, Heidelberg Home Eco günstig in der Mittelklasse. Premium-Modelle mit PV-Überschussladen, dynamischem Lastmanagement oder bidirektionalem Laden (V2H/V2G) kosten 1.200–2.500 €. Stand: Mai 2026.</p>
       <p><strong>2. Installation (500–2.500 €):</strong> Hier liegt die größte Unsicherheit. Im Einfamilienhaus mit Garage am Haus und modernem Sicherungskasten sind 500–1.000 € realistisch. Im Altbau oder bei langen Kabelwegen können schnell 1.500–2.500 € anfallen — vor allem wenn der Zählerschrank erneuert werden muss. Die <strong>Anmeldung beim Netzbetreiber ist Pflicht</strong>; ab 12 kW Ladeleistung ist auch eine Genehmigung nötig.</p>
       <p><strong>3. Zusatzkomponenten (0–500 €):</strong> Ein FI-Schutzschalter Typ A (gesetzlich Pflicht) kostet 150–400 €, falls nicht in der Wallbox integriert. Ein separater Zähler für die steuerliche Abrechnung von Dienstwagen-Ladestrom kostet 200–400 €.</p>
       <h3 class="display text-xl font-semibold pt-4">Förderungen 2026 – die Wahrheit</h3>
-      <p>Die populäre <strong>KfW-Förderung 440</strong> für private Wallboxen ist seit 2021 ausgelaufen und wurde nicht erneuert. Stand 2026 gibt es für Privatpersonen im Einfamilienhaus <strong>keine bundesweite Förderung</strong> mehr.</p>
-      <p>Was es noch gibt: Einige Bundesländer und Kommunen haben eigene Programme (oft begrenztes Budget, schnell ausgeschöpft). Ein neues Bundesprogramm startet im April 2026 mit 500 Mio. € — aber nur für <strong>Mehrparteienhäuser</strong>, bis zu 2.000 € pro Stellplatz für bidirektionale Wallboxen.</p>
-      <p><strong>Steuertrick für alle:</strong> Die Installation einer Wallbox kannst du als haushaltsnahe Dienstleistung absetzen — 20 % der reinen Arbeitskosten (nicht des Materials), maximal 1.200 € Steuerersparnis pro Jahr. Wichtig: Rechnung muss überwiesen werden, keine Barzahlung.</p>
+      <p>Die populäre <strong>KfW-Förderung 440</strong> für private Wallboxen wurde am <strong>27. Oktober 2021</strong> wegen Mittelerschöpfung gestoppt — das Programm hat damals 800 Mio. € verteilt und über 900.000 Ladepunkte gefördert. Eine Neuauflage gab es nicht. Stand 2026 gibt es für Privatpersonen im Einfamilienhaus <strong>keine bundesweite Förderung</strong> mehr.</p>
+      <p>Was es noch gibt: Einige Bundesländer und Kommunen haben eigene Programme (oft begrenztes Budget, schnell ausgeschöpft). Ein neues Bundesprogramm startet im April 2026 mit 500 Mio. € — aber nur für <strong>Mehrparteienhäuser</strong>, bis zu 2.000 € pro Stellplatz für bidirektionale Wallboxen. Wenn du ein E-Auto kaufst, kommt zusätzlich die Kaufprämie ins Spiel — Details im <a href="e-auto-foerderung-2026.html" class="accent underline">Ratgeber zur E-Auto-Förderung 2026</a>.</p>
+      <p><strong>Steuertrick für alle:</strong> Die Installation einer Wallbox kannst du als haushaltsnahe Dienstleistung absetzen — 20 % der reinen Arbeitskosten (nicht des Materials), maximal 1.200 € Steuerersparnis pro Jahr. Wichtig: Rechnung muss überwiesen werden, keine Barzahlung. Alle weiteren laufenden Steuervorteile (Kfz-Steuer, Dienstwagen-Regel, Strompreispauschale für Dienstwagen-Heimlader) habe ich im <a href="steuervorteile-e-auto-2026.html" class="accent underline">Steuer-Ratgeber 2026</a> ausführlich erklärt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-6 py-12">
+  <div class="warm-bg rounded-lg p-8 border border-stone-200">
+    <p class="text-xs uppercase tracking-widest accent font-semibold mb-2">📚 Mehr Klarheit zum E-Auto</p>
+    <h2 class="display text-2xl font-semibold mb-6">Tiefer eintauchen in die wichtigen Themen</h2>
+    <div class="space-y-4">
+      <a href="e-auto-foerderung-2026.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Ratgeber · Förderung</p>
+        <p class="font-semibold mb-1">E-Auto Förderung 2026: Wer bekommt wie viel?</p>
+        <p class="text-sm text-stone-600">Bis zu 6.000 € Kaufprämie — der komplette Überblick mit Antragsleitfaden.</p>
+      </a>
+      <a href="steuervorteile-e-auto-2026.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Ratgeber · Steuern</p>
+        <p class="font-semibold mb-1">Steuervorteile beim E-Auto 2026</p>
+        <p class="text-sm text-stone-600">Kfz-Steuer, 0,25%-Dienstwagen, THG-Prämie, Strompreispauschale — alle fünf Vorteile mit Beispielrechnungen.</p>
+      </a>
+      <a href="e-auto-10000-km.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Ratgeber · Grundsatz</p>
+        <p class="font-semibold mb-1">Lohnt sich ein E-Auto bei 10.000 km im Jahr?</p>
+        <p class="text-sm text-stone-600">Die ehrliche Antwort mit drei realistischen Szenarien — bevor du den Wallbox-Rechner brauchst.</p>
+      </a>
     </div>
   </div>
 </section>
@@ -288,7 +316,7 @@
     </details>
     <details class="bg-white border border-stone-200 rounded-lg p-5">
       <summary class="font-semibold flex justify-between items-center"><span>Was ist die §14a EnWG-Pflicht für neue Wallboxen?</span><span class="accent">+</span></summary>
-      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Seit 2024 müssen alle neu installierten Wallboxen ab 4,2 kW vom Netzbetreiber bei Netzengpässen vorübergehend gedrosselt werden können — auf minimal 4,2 kW. Eine komplette Abschaltung ist nicht erlaubt. Im Gegenzug bekommst du Rabatte auf das Netzentgelt (Modul 1: pauschaler Abschlag, Modul 2: reduzierter Arbeitspreis). In der Praxis greift die Drosselung selten und kurz.</p>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Seit dem 1. Januar 2024 müssen alle neu installierten Wallboxen mit einer Leistung über 4,2 kW vom Netzbetreiber bei Netzengpässen vorübergehend gedrosselt werden können — auf minimal 4,2 kW. Eine komplette Abschaltung ist nicht erlaubt. Eine präventive Drosselung ist bis Ende 2028 auf maximal 2 Stunden pro Tag begrenzt. Im Gegenzug bekommst du eine Netzentgelt-Reduktion über eines von drei Modulen: <strong>Modul 1</strong> (pauschaler Abschlag, ca. 110–190 € pro Jahr — der einfachste Weg), <strong>Modul 2</strong> (zeitvariables Netzentgelt mit drei Preisstufen) oder <strong>Modul 3</strong> (Kombination). In der Praxis kommt die Drosselung in den meisten Regionen selten und kurz vor.</p>
     </details>
   </div>
 </section>
@@ -306,10 +334,10 @@
 
 <script>
   const scenarios = {
-    'efh-einfach': { hardware: '900', installation: 800,  extras: 150 },
-    'efh-aufwand': { hardware: '900', installation: 1800, extras: 350 },
-    'reihenhaus':  { hardware: '900', installation: 1200, extras: 200 },
-    'mfh':         { hardware: '900', installation: 2200, extras: 400 }
+    'efh-einfach': { hardware: '750', installation: 800,  extras: 150 },
+    'efh-aufwand': { hardware: '750', installation: 1800, extras: 350 },
+    'reihenhaus':  { hardware: '750', installation: 1200, extras: 200 },
+    'mfh':         { hardware: '750', installation: 2200, extras: 400 }
   };
 
   document.querySelectorAll('[data-scenario]').forEach(btn => {
