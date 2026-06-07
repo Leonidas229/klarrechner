@@ -275,6 +275,23 @@
             <label class="block text-xs text-stone-600 mb-1">Versicherung Verbrenner (€ / Jahr)</label>
             <input type="number" id="ice-insurance" value="650" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
           </div>
+          <hr class="border-stone-200 my-1" />
+          <div>
+            <label class="block text-xs text-stone-600 mb-1">Restwert E-Auto am Ende der Laufzeit (%) <span class="help-icon" title="Geschätzter Wiederverkaufswert in Prozent des Neupreises nach dem gewählten Zeitraum. Faustwert: rund 50 % nach 5 Jahren – bei längerem Zeitraum niedriger ansetzen.">?</span></label>
+            <input type="number" id="ev-resale" value="50" min="0" max="100" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1">Restwert Verbrenner am Ende der Laufzeit (%) <span class="help-icon" title="Geschätzter Wiederverkaufswert in Prozent des Neupreises nach dem gewählten Zeitraum. Faustwert: rund 55 % nach 5 Jahren.">?</span></label>
+            <input type="number" id="ice-resale" value="55" min="0" max="100" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1">Anteil öffentliches Laden (%) <span class="help-icon" title="Wie viel deines Stroms lädst du unterwegs/öffentlich statt zu Hause? 0 = nur zu Hause. Öffentliches Laden ist meist deutlich teurer und schmälert den Vorteil.">?</span></label>
+            <input type="number" id="pub-share" value="0" min="0" max="100" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1">Preis öffentliches Laden (€ / kWh)</label>
+            <input type="number" id="pub-price" value="0.55" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+          </div>
         </div>
       </details>
     </div>
@@ -432,9 +449,10 @@
   const fmtKm = (n) => new Intl.NumberFormat('de-DE', {minimumFractionDigits:2, maximumFractionDigits:2}).format(n);
   const v = (id) => parseFloat(document.getElementById(id).value) || 0;
   const sv = (id) => document.getElementById(id).value;
+  const clamp = (x, lo, hi) => Math.min(Math.max(x, lo), hi);
 
   function kfzSteuer(hubraum, co2, fuel) {
-    const grundbetrag = (fuel === 'diesel' ? 9.50 : 2.00) * (hubraum / 100);
+    const grundbetrag = (fuel === 'diesel' ? 9.50 : 2.00) * Math.ceil(hubraum / 100);
     const co2Frei = 95;
     let co2Anteil = 0;
     if (co2 > co2Frei) {
@@ -454,10 +472,12 @@
     const years = v('years');
     document.getElementById('years-display').textContent = years + (years === 1 ? ' Jahr' : ' Jahre');
 
-    const evEnergy = (v('ev-consumption') / 100) * km * v('ev-energy-price') * years;
+    const pubShare = clamp(v('pub-share'), 0, 100) / 100;
+    const evEnergyPrice = v('ev-energy-price') * (1 - pubShare) + v('pub-price') * pubShare;
+    const evEnergy = (v('ev-consumption') / 100) * km * evEnergyPrice * years;
     const evMaint = v('ev-maintenance') * years;
     const evIns = v('ev-insurance') * years;
-    const evDeprec = v('ev-price') * 0.50 * Math.min(years/5, 1) + v('ev-price') * 0.05 * Math.max(years - 5, 0);
+    const evDeprec = v('ev-price') * (1 - clamp(v('ev-resale'), 0, 100) / 100);
     const evThg = -v('thg') * years;
     const evSteuer = 0;
     const evTotal = evEnergy + evMaint + evIns + evDeprec + evThg + evSteuer;
@@ -465,14 +485,15 @@
     const iceEnergy = (v('ice-consumption') / 100) * km * v('ice-energy-price') * years;
     const iceMaint = v('ice-maintenance') * years;
     const iceIns = v('ice-insurance') * years;
-    const iceDeprec = v('ice-price') * 0.45 * Math.min(years/5, 1) + v('ice-price') * 0.06 * Math.max(years - 5, 0);
+    const iceDeprec = v('ice-price') * (1 - clamp(v('ice-resale'), 0, 100) / 100);
     const iceSteuer = kfzSteuer(v('ice-hubraum'), v('ice-co2'), sv('ice-fuel')) * years;
     const iceTotal = iceEnergy + iceMaint + iceIns + iceDeprec + iceSteuer;
 
     document.getElementById('ev-total').textContent = fmt(evTotal);
     document.getElementById('ice-total').textContent = fmt(iceTotal);
-    document.getElementById('ev-per-km').textContent = fmtKm(evTotal / (km * years)) + ' € / km';
-    document.getElementById('ice-per-km').textContent = fmtKm(iceTotal / (km * years)) + ' € / km';
+    const denom = km * years;
+    document.getElementById('ev-per-km').textContent = denom > 0 ? fmtKm(evTotal / denom) + ' € / km' : '–';
+    document.getElementById('ice-per-km').textContent = denom > 0 ? fmtKm(iceTotal / denom) + ' € / km' : '–';
 
     const diff = Math.abs(evTotal - iceTotal);
     const winner = document.getElementById('winner');
@@ -518,12 +539,17 @@
   function drawChart(km) {
     const chart = document.getElementById('chart');
     const breakEvenText = document.getElementById('break-even-text');
-    const maxYears = 10;
+    const maxYears = Math.max(1, Math.round(v('years')));
+    const pubShare = clamp(v('pub-share'), 0, 100) / 100;
+    const evEnergyPrice = v('ev-energy-price') * (1 - pubShare) + v('pub-price') * pubShare;
+    const evDeprecTotal = v('ev-price') * (1 - clamp(v('ev-resale'), 0, 100) / 100);
+    const iceDeprecTotal = v('ice-price') * (1 - clamp(v('ice-resale'), 0, 100) / 100);
+    const iceTax = kfzSteuer(v('ice-hubraum'), v('ice-co2'), sv('ice-fuel'));
     let breakEvenYear = null;
     let html = '';
     for (let y = 1; y <= maxYears; y++) {
-      const evY = (v('ev-consumption')/100) * km * v('ev-energy-price') * y + v('ev-maintenance') * y + v('ev-insurance') * y + v('ev-price') * 0.50 * Math.min(y/5, 1) + v('ev-price') * 0.05 * Math.max(y-5, 0) - v('thg') * y;
-      const iceY = (v('ice-consumption')/100) * km * v('ice-energy-price') * y + v('ice-maintenance') * y + v('ice-insurance') * y + v('ice-price') * 0.45 * Math.min(y/5, 1) + v('ice-price') * 0.06 * Math.max(y-5, 0) + kfzSteuer(v('ice-hubraum'), v('ice-co2'), sv('ice-fuel')) * y;
+      const evY = (v('ev-consumption')/100) * km * evEnergyPrice * y + v('ev-maintenance') * y + v('ev-insurance') * y + evDeprecTotal * (y / maxYears) - v('thg') * y;
+      const iceY = (v('ice-consumption')/100) * km * v('ice-energy-price') * y + v('ice-maintenance') * y + v('ice-insurance') * y + iceDeprecTotal * (y / maxYears) + iceTax * y;
       if (breakEvenYear === null && evY < iceY) breakEvenYear = y;
       const max = Math.max(evY, iceY);
       const evW = (evY / max) * 100;
@@ -532,10 +558,10 @@
     }
     chart.innerHTML = html;
     if (breakEvenYear) breakEvenText.innerHTML = `<strong class="accent">Break-even:</strong> Ab dem ${breakEvenYear}. Jahr ist das E-Auto günstiger als der Verbrenner.`;
-    else breakEvenText.innerHTML = `<strong class="ice-color">Hinweis:</strong> Bei diesen Annahmen bleibt der Verbrenner über 10 Jahre günstiger.`;
+    else breakEvenText.innerHTML = `<strong class="ice-color">Hinweis:</strong> Bei diesen Annahmen bleibt der Verbrenner über die gewählten ${maxYears} ${maxYears === 1 ? 'Jahr' : 'Jahre'} günstiger.`;
   }
 
-  const ids = ['km','years','ev-price','ev-consumption','ev-energy-price','ice-price','ice-consumption','ice-energy-price','ice-hubraum','ice-co2','ice-fuel','ev-maintenance','ice-maintenance','ev-insurance','ice-insurance','thg'];
+  const ids = ['km','years','ev-price','ev-consumption','ev-energy-price','ice-price','ice-consumption','ice-energy-price','ice-hubraum','ice-co2','ice-fuel','ev-maintenance','ice-maintenance','ev-insurance','ice-insurance','thg','ev-resale','ice-resale','pub-share','pub-price'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener('input', calculate);
