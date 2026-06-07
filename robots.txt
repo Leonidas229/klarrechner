@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://klarrechner.de/sitemap.xml
+Sitemap: https://www.klarrechner.de/sitemap.xml
