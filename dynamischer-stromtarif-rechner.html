@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="canonical" href="https://www.klarrechner.de/dynamischer-stromtarif-rechner.html" />
+<meta name="msvalidate.01" content="DFA0FE1B4558E3BF440C569D51FA5054" />
+<title>Dynamischer Stromtarif fürs E-Auto: Lohnt sich Tibber & Co.? Rechner 2026 – Klarrechner.de</title>
+<meta name="description" content="Berechne, ob sich ein dynamischer Stromtarif (Tibber, aWATTar, Ostrom) fürs Laden deines E-Autos lohnt. Mit ehrlichen Annahmen, Smart-Meter-Kosten und realistischer Ersparnis. Stand 2026." />
+<meta name="keywords" content="dynamischer Stromtarif Rechner, Tibber Ersparnis E-Auto, Ladekosten dynamischer Tarif, lohnt sich Tibber, dynamischer Stromtarif laden" />
+<meta property="og:title" content="Dynamischer Stromtarif fürs E-Auto: Lohnt sich Tibber & Co.? – Klarrechner.de" />
+<meta property="og:description" content="Lohnt sich ein dynamischer Stromtarif fürs Laden deines E-Autos? Rechner mit ehrlichen Annahmen, Stand 2026." />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.bunny.net">
+
+<link href="https://fonts.bunny.net/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Dynamischer-Stromtarif-Rechner fürs E-Auto",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://www.klarrechner.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Dynamischer-Stromtarif-Rechner",
+      "item": "https://www.klarrechner.de/dynamischer-stromtarif-rechner.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Lohnt sich ein dynamischer Stromtarif fürs E-Auto-Laden?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für E-Auto-Fahrer mit eigener Wallbox lohnt es sich am ehesten, weil du das Laden gezielt in die günstigen Nacht- und Schwachlaststunden legen kannst. Wer 70 bis 90 Prozent seines Ladestroms verschieben kann, spart gegenüber einem festen Tarif oft 80 bis 250 Euro im Jahr. Ohne diese Verschiebung bleibt kaum Ersparnis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brauche ich für einen dynamischen Tarif ein Smart Meter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Für die stündliche Abrechnung ist ein intelligentes Messsystem (Smart Meter) gesetzlich nötig. Der Rollout liegt Anfang 2026 erst bei rund 4 Prozent der Zählpunkte. Das Messstellenentgelt von etwa 20 bis 100 Euro pro Jahr solltest du in die Rechnung einbeziehen. Ohne Smart Meter ist nur eine monatlich variable Abrechnung möglich, die weniger spart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viel kann ich beim Laden konkret sparen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das hängt von deinem Ladevolumen ab und davon, wie viel du in günstige Stunden verschieben kannst. In günstigen Nachtstunden liegt der Gesamtpreis inklusive Netz und Steuern realistisch bei 0,19 bis 0,22 Euro pro kWh, gegenüber 0,27 bis 0,35 Euro bei einem festen Tarif. Bei 2.500 kWh Heim-Ladestrom und 80 Prozent Verschiebung sind das grob 100 bis 250 Euro netto im Jahr."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welches Risiko haben dynamische Stromtarife?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Preis schwankt stündlich mit der Strombörse. In Dunkelflauten ohne Wind und Sonne kann der Strom teurer werden als ein fester Tarif. Wer seinen Verbrauch nicht steuern kann, zahlt im Schnitt und trägt trotzdem das Schwankungsrisiko. Für reine E-Auto-Lader mit planbarem Ladefenster ist das Risiko gut beherrschbar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welcher Anbieter ist für dynamisches Laden geeignet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bekannte Anbieter sind Tibber, aWATTar, Ostrom und 1Komma5°. Die Unterschiede liegen vor allem in der monatlichen Grundgebühr (0 bis 15 Euro), der Marge auf den Börsenpreis und der App-Qualität. Seit Januar 2025 muss laut Paragraf 41a EnWG ohnehin jeder Stromanbieter mindestens einen dynamischen Tarif anbieten."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #1a1a1a; }
+  .display { font-family: 'Fraunces', serif; letter-spacing: -0.02em; }
+  .accent { color: #2D5A3D; }
+  .accent-bg { background: #2D5A3D; }
+  .accent-border { border-color: #2D5A3D; }
+  .accent-soft { background: #E8F0EA; }
+  .warm-bg { background: #F4EFE6; }
+  .ice-color { color: #B45309; }
+  input[type="number"]:focus, input[type="range"]:focus, select:focus { outline: 2px solid #2D5A3D; outline-offset: 2px; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary { cursor: pointer; list-style: none; }
+  .pill { transition: all 0.15s ease; }
+  .pill:hover { background: #2D5A3D; color: white; border-color: #2D5A3D; }
+  .pill.active { background: #2D5A3D; color: white; border-color: #2D5A3D; }
+  .help-icon { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #ddd; color: #555; text-align: center; line-height: 14px; font-size: 10px; cursor: help; margin-left: 4px; }
+  .scenario { transition: all 0.2s ease; }
+  .scenario:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .scenario.active { border-color: #2D5A3D; background: #E8F0EA; }
+  input[type="checkbox"] { accent-color: #2D5A3D; min-width: 18px; min-height: 18px; }
+  input[type="range"] { min-height: 24px; }
+  @media (max-width: 640px) {
+    .scenario { padding: 0.75rem !important; }
+    .scenario p.text-2xl { font-size: 1.5rem !important; margin-bottom: 0.25rem !important; }
+  }
+</style>
+  <meta property="og:url" content="https://www.klarrechner.de/dynamischer-stromtarif-rechner.html" />
+  <meta property="og:site_name" content="Klarrechner.de" />
+  <meta property="og:image" content="https://www.klarrechner.de/klarrechner-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Klarrechner.de – E-Auto, Wallbox & Co. klar gerechnet" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.klarrechner.de/klarrechner-og.png" />
+</head>
+<body>
+
+<div class="bg-stone-900 text-white text-xs">
+  <div class="max-w-6xl mx-auto px-6 py-2 flex justify-between items-center">
+    <span>🌱 Stand: 2026 · Daten regelmäßig aktualisiert</span>
+    <span class="hidden md:inline">⚡ Unabhängig, transparent, ohne Anmeldung</span>
+  </div>
+</div>
+
+<header class="border-b border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <svg viewBox="0 0 36 36" class="w-8 h-8" aria-label="Klarrechner Logo">
+        <rect x="6" y="22" width="5" height="8" rx="1" fill="#2D5A3D" opacity="0.3"/>
+        <rect x="13" y="16" width="5" height="14" rx="1" fill="#2D5A3D" opacity="0.55"/>
+        <rect x="20" y="10" width="5" height="20" rx="1" fill="#2D5A3D" opacity="0.8"/>
+        <rect x="27" y="6" width="5" height="24" rx="1" fill="#2D5A3D"/>
+      </svg>
+      <span class="display font-semibold text-lg">Klar<span class="accent">rechner</span>.de</span>
+    </a>
+    <nav class="hidden md:flex gap-8 text-sm text-stone-600">
+      <a href="index.html" class="hover:text-stone-900">Startseite</a>
+      <a href="e-auto-rechner-v2.html" class="hover:text-stone-900">E-Auto Rechner</a>
+      <a href="wallbox-rechner.html" class="hover:text-stone-900">Wallbox</a>
+      <a href="ueber-uns.html" class="hover:text-stone-900">Über uns</a>
+    </nav>
+  </div>
+</header>
+
+<section class="max-w-5xl mx-auto px-6 pt-12 pb-6">
+  <div class="max-w-3xl">
+    <p class="text-sm uppercase tracking-widest accent font-medium mb-4">Dynamischer-Stromtarif-Rechner · Stand 2026</p>
+    <h1 class="display text-4xl md:text-5xl font-semibold leading-tight mb-5">
+      Lohnt sich ein dynamischer Stromtarif fürs E-Auto-Laden?
+    </h1>
+    <p class="text-stone-600 text-lg leading-relaxed">
+      Tibber, aWATTar und Co. koppeln deinen Strompreis stündlich an die Börse. Wer das Laden in die
+      günstigen Nachtstunden legt, kann sparen. Dieser Rechner zeigt dir mit ehrlichen Annahmen,
+      ob sich der Wechsel für dein Ladeprofil wirklich rechnet, inklusive der Smart-Meter-Kosten.
+    </p>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-6">
+  <p class="text-sm text-stone-600 mb-3">Schnellstart mit einem Ladeprofil:</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <button data-profile="standard" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🚗</p>
+      <p class="font-semibold text-sm">Standard-Pendler</p>
+      <p class="text-xs text-stone-500">~15.000 km, flexibel</p>
+    </button>
+    <button data-profile="wenig" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🍃</p>
+      <p class="font-semibold text-sm">Wenigfahrer</p>
+      <p class="text-xs text-stone-500">~8.000 km</p>
+    </button>
+    <button data-profile="viel" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">🛣️</p>
+      <p class="font-semibold text-sm">Vielfahrer</p>
+      <p class="text-xs text-stone-500">~25.000 km</p>
+    </button>
+    <button data-profile="starr" class="scenario p-4 bg-white border-2 border-stone-200 rounded-lg text-left">
+      <p class="text-2xl mb-1">⏱️</p>
+      <p class="font-semibold text-sm">Wenig Flexibilität</p>
+      <p class="text-xs text-stone-500">kaum verschiebbar</p>
+    </button>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-12">
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="warm-bg rounded-lg p-6 md:p-8">
+      <h2 class="display text-2xl font-semibold mb-6">Deine Angaben</h2>
+
+      <h3 class="font-semibold mb-3 flex items-center gap-2"><span class="text-xl">⚡</span> Dein Laden</h3>
+      <div class="space-y-3 mb-6">
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Jährliche Fahrleistung (km)</label>
+          <input type="number" id="km" value="15000" step="1000" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Verbrauch E-Auto (kWh / 100 km)</label>
+          <input type="number" id="consumption" value="18" step="0.1" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Anteil zu Hause geladen (%) <span class="help-icon" title="Nur der zu Hause geladene Strom läuft über deinen Stromtarif. Realistisch 70 bis 90 Prozent bei eigenem Stellplatz.">?</span></label>
+          <input type="range" id="home-share" min="0" max="100" value="80" step="5" class="w-full" />
+          <p class="text-xs text-stone-500 mt-1"><span id="home-share-label">80</span>% zu Hause · Rest unterwegs</p>
+        </div>
+      </div>
+
+      <hr class="my-6 border-stone-300" />
+
+      <h3 class="font-semibold mb-3 flex items-center gap-2"><span class="text-xl">⏱️</span> Dein Tarif-Setup</h3>
+      <div class="space-y-3 mb-6">
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Verschiebbarer Anteil in günstige Stunden (%) <span class="help-icon" title="Wie viel deines Heim-Ladens kannst du gezielt in die günstigen Nacht- und Schwachlaststunden legen? Mit Wallbox-Timer oder App meist 70 bis 90 Prozent.">?</span></label>
+          <input type="range" id="shift-share" min="0" max="100" value="80" step="5" class="w-full" />
+          <p class="text-xs text-stone-500 mt-1"><span id="shift-share-label">80</span>% in günstigen Stunden · Rest zum Durchschnitt</p>
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Dein aktueller fester Arbeitspreis (€ / kWh) <span class="help-icon" title="Typische Festtarife 2026 liegen bei 0,27 bis 0,35 Euro pro kWh.">?</span></label>
+          <input type="number" id="fix-price" value="0.32" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Günstiger dynamischer Preis in Schwachlaststunden (€ / kWh) <span class="help-icon" title="Gesamtpreis inklusive Netzentgelte und Steuern in den günstigen Nacht- und Schwachlaststunden, realistisch 0,19 bis 0,22 Euro pro kWh.">?</span></label>
+          <input type="number" id="cheap-price" value="0.22" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Durchschnittlicher dynamischer Preis für den Rest (€ / kWh) <span class="help-icon" title="Für den nicht verschiebbaren Anteil. Der Tibber-Jahresschnitt 2025 lag bei rund 0,25 bis 0,32 Euro pro kWh.">?</span></label>
+          <input type="number" id="avg-price" value="0.28" step="0.01" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+      </div>
+
+      <hr class="my-6 border-stone-300" />
+
+      <h3 class="font-semibold mb-3 flex items-center gap-2"><span class="text-xl">💡</span> Zusatzkosten</h3>
+      <div class="space-y-3 mb-6">
+        <div>
+          <label class="block text-xs text-stone-600 mb-1">Mehrkosten Messstellenbetrieb Smart Meter (€ / Jahr) <span class="help-icon" title="Für einen echten dynamischen Tarif ist ein Smart Meter Pflicht. Das jährliche Messstellenentgelt liegt je nach Betreiber bei 20 bis 100 Euro.">?</span></label>
+          <input type="number" id="smart-meter" value="50" step="10" class="w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="bg-white border border-stone-200 rounded-lg p-6">
+        <p class="text-sm text-stone-500 mb-1">Netto-Ersparnis pro Jahr (nur Laden)</p>
+        <h2 id="net-saving" class="display text-3xl font-semibold mb-3 accent">–</h2>
+        <div id="saving-breakdown" class="text-sm text-stone-600 space-y-1"></div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white border border-stone-200 rounded-lg p-5">
+          <p class="text-xs uppercase tracking-wide ice-color font-semibold mb-1">Fester Tarif</p>
+          <p class="text-xs text-stone-500 mb-2">Ladekosten / Jahr</p>
+          <p id="cost-fix" class="display text-2xl font-semibold">–</p>
+          <p id="cost-fix-detail" class="text-xs text-stone-500 mt-1">– € / kWh</p>
+        </div>
+        <div class="bg-white border-2 accent-border rounded-lg p-5">
+          <p class="text-xs uppercase tracking-wide accent font-semibold mb-1">Dynamisch</p>
+          <p class="text-xs text-stone-500 mb-2">Ladekosten / Jahr</p>
+          <p id="cost-dyn" class="display text-2xl font-semibold">–</p>
+          <p id="cost-dyn-detail" class="text-xs text-stone-500 mt-1">– € / kWh</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-stone-200 rounded-lg p-6">
+        <h3 class="display font-semibold mb-2">Kumulierte Ladekosten über 10 Jahre</h3>
+        <p id="verdict-text" class="text-sm text-stone-700 mb-4">–</p>
+        <div id="year-chart" class="space-y-1.5 text-xs"></div>
+      </div>
+
+      <div class="accent-soft rounded-lg p-6 border accent-border">
+        <p class="text-xs uppercase tracking-wide accent font-semibold mb-2">📊 In 10 Jahren</p>
+        <p id="ten-year-text" class="text-stone-800 leading-relaxed">–</p>
+      </div>
+
+      <div class="bg-stone-900 text-white rounded-lg p-5">
+        <p class="text-xs uppercase tracking-wide text-stone-400 mb-2">💡 Klarrechner-Tipp</p>
+        <p class="text-sm leading-relaxed">Der Spareffekt steht und fällt damit, dass du das Laden wirklich in die günstigen Stunden legst. Stell den Wallbox-Timer oder die App so ein, dass nachts geladen wird, und wirf abends einen Blick auf die Day-Ahead-Preise. Ohne diese Steuerung zahlst du den Durchschnitt und trägst trotzdem das Schwankungsrisiko.</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 rounded-lg p-5">
+        <p class="text-[11px] uppercase tracking-wide text-stone-400 mb-2">Anzeige</p>
+        <p class="text-sm leading-relaxed text-stone-700 mb-3">Tibber ist einer der bekanntesten Anbieter für dynamische Tarife und gibt den Börsenpreis stündlich weiter. Konditionen ändern sich, prüfe vor Abschluss die aktuellen Werte für deine Postleitzahl.</p>
+        <a href="https://www.awin1.com/cread.php?awinmid=57405&amp;awinaffid=2920117&amp;ued=https%3A%2F%2Ftibber.com%2Fde%2Fautostrom" rel="sponsored noopener" target="_blank" class="inline-block accent-bg text-white px-5 py-2 rounded-md text-sm font-medium hover:opacity-90">Tibber-Konditionen ansehen</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-xs text-stone-500 mt-8 max-w-3xl">
+    Hinweis: Dieser Rechner liefert eine Schätzung auf Basis deiner Annahmen, nicht auf Basis von Live-Börsenpreisen.
+    Ein dynamischer Tarif braucht ein Smart Meter. Die Ersparnis entsteht nur, wenn du das Laden aktiv in günstige Stunden verschiebst.
+    In Dunkelflauten kann dynamischer Strom teurer als ein Festtarif sein. Keine Steuer-, Anlage- oder Vertragsberatung. Stand: 2026.
+  </p>
+</section>
+
+<section class="bg-white border-y border-stone-200 py-16">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="text-sm uppercase tracking-widest accent font-medium mb-4">Hintergrund</p>
+    <h2 class="display text-3xl font-semibold mb-6">Dynamische Stromtarife fürs E-Auto 2026: Wo die Ersparnis herkommt</h2>
+    <div class="prose prose-stone max-w-none space-y-4 text-stone-700 leading-relaxed">
+      <p>Bei einem dynamischen Stromtarif zahlst du keinen festen Arbeitspreis, sondern einen Preis, der sich stündlich am Großhandelspreis der Strombörse (EPEX SPOT) orientiert. Der Anbieter schlägt darauf eine feste Marge und eine monatliche Grundgebühr auf. Seit dem 1. Januar 2025 muss laut Paragraf 41a EnWG jeder Stromanbieter in Deutschland mindestens einen solchen Tarif anbieten.</p>
+      <h3 class="display text-xl font-semibold pt-4">Warum gerade E-Auto-Fahrer profitieren</h3>
+      <p>Der reine Börsenpreis lag 2025 und 2026 im Schnitt bei rund 10 ct/kWh, schwankt aber stark: nachts und bei viel Wind oder Sonne ist er niedrig, in Dunkelflauten hoch. Ein E-Auto ist der ideale flexible Verbraucher, weil du über Nacht lädst und das Ladefenster planbar ist. Wer 70 bis 90 Prozent seines Heim-Ladens in die günstigen Stunden legt, zahlt dort inklusive Netzentgelten und Steuern oft nur 0,19 bis 0,22 €/kWh, statt 0,27 bis 0,35 €/kWh bei einem festen Tarif.</p>
+      <h3 class="display text-xl font-semibold pt-4">Der Haken: Smart Meter und Disziplin</h3>
+      <p>Ein echter dynamischer Tarif ist nur mit einem intelligenten Messsystem (Smart Meter) möglich. Der Rollout ist langsam: Anfang 2026 waren erst rund 4 Prozent der Zählpunkte ausgestattet. Das Messstellenentgelt von 20 bis 100 € pro Jahr frisst einen Teil der Ersparnis, deshalb rechnet dieser Rechner es gleich gegen. Und ohne aktives Verschieben des Ladens in günstige Stunden bleibt vom Vorteil wenig übrig, dann zahlst du im Schnitt und trägst nur das Risiko.</p>
+      <p>Wenn du tiefer einsteigen willst: Im Ratgeber <a href="e-auto-guenstig-laden-2026.html" class="accent underline">Günstig zu Hause laden 2026</a> ordne ich dynamische Tarife in alle Lade-Optionen ein, und mit dem <a href="wallbox-rechner.html" class="accent underline">Wallbox-Rechner</a> prüfst du, ob sich die passende Ladestation für dich lohnt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-6 py-12">
+  <div class="warm-bg rounded-lg p-8 border border-stone-200">
+    <p class="text-xs uppercase tracking-widest accent font-semibold mb-2">📚 Mehr Klarheit zum E-Auto</p>
+    <h2 class="display text-2xl font-semibold mb-6">Tiefer eintauchen in die wichtigen Themen</h2>
+    <div class="space-y-4">
+      <a href="e-auto-guenstig-laden-2026.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Ratgeber · Laden</p>
+        <p class="font-semibold mb-1">Günstig zu Hause laden 2026</p>
+        <p class="text-sm text-stone-600">Alle Lade-Optionen im Vergleich, von dynamischen Tarifen bis PV-Überschuss. Die ideale Ergänzung zu diesem Rechner.</p>
+      </a>
+      <a href="wallbox-rechner.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Rechner · Wallbox</p>
+        <p class="font-semibold mb-1">Was kostet eine Wallbox, und ab wann lohnt sie sich?</p>
+        <p class="text-sm text-stone-600">Hardware, Installation und Amortisation gegenüber öffentlichem Laden.</p>
+      </a>
+      <a href="e-auto-rechner-v2.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Rechner · Grundsatz</p>
+        <p class="font-semibold mb-1">E-Auto oder Verbrenner: Was rechnet sich für dich?</p>
+        <p class="text-sm text-stone-600">Der große Kostenvergleich über mehrere Jahre, inklusive Laden und Steuer.</p>
+      </a>
+      <a href="steuervorteile-e-auto-2026.html" class="block bg-white border border-stone-200 rounded-md p-4 hover:shadow-md transition-shadow">
+        <p class="text-xs accent font-semibold uppercase tracking-wide mb-1">Ratgeber · Steuern</p>
+        <p class="font-semibold mb-1">Steuervorteile beim E-Auto 2026</p>
+        <p class="text-sm text-stone-600">Kfz-Steuer, Dienstwagen-Regel, THG-Prämie und Strompreispauschale mit Beispielen.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-6 py-16">
+  <p class="text-sm uppercase tracking-widest accent font-medium mb-4">FAQ</p>
+  <h2 class="display text-3xl font-semibold mb-8">Häufige Fragen</h2>
+  <div class="space-y-3">
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center"><span>Lohnt sich ein dynamischer Stromtarif fürs E-Auto-Laden?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Für E-Auto-Fahrer mit eigener Wallbox lohnt es sich am ehesten, weil du das Laden gezielt in die günstigen Nacht- und Schwachlaststunden legen kannst. Wer 70 bis 90 Prozent seines Ladestroms verschieben kann, spart gegenüber einem festen Tarif oft 80 bis 250 Euro im Jahr. Ohne diese Verschiebung bleibt kaum Ersparnis.</p>
+    </details>
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center"><span>Brauche ich für einen dynamischen Tarif ein Smart Meter?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Ja. Für die stündliche Abrechnung ist ein intelligentes Messsystem (Smart Meter) gesetzlich nötig. Der Rollout liegt Anfang 2026 erst bei rund 4 Prozent der Zählpunkte. Das Messstellenentgelt von etwa 20 bis 100 Euro pro Jahr solltest du in die Rechnung einbeziehen. Ohne Smart Meter ist nur eine monatlich variable Abrechnung möglich, die weniger spart.</p>
+    </details>
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center"><span>Wie viel kann ich beim Laden konkret sparen?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Das hängt von deinem Ladevolumen ab und davon, wie viel du in günstige Stunden verschieben kannst. In günstigen Nachtstunden liegt der Gesamtpreis inklusive Netz und Steuern realistisch bei 0,19 bis 0,22 Euro pro kWh, gegenüber 0,27 bis 0,35 Euro bei einem festen Tarif. Bei 2.500 kWh Heim-Ladestrom und 80 Prozent Verschiebung sind das grob 100 bis 250 Euro netto im Jahr.</p>
+    </details>
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center"><span>Welches Risiko haben dynamische Stromtarife?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Der Preis schwankt stündlich mit der Strombörse. In Dunkelflauten ohne Wind und Sonne kann der Strom teurer werden als ein fester Tarif. Wer seinen Verbrauch nicht steuern kann, zahlt im Schnitt und trägt trotzdem das Schwankungsrisiko. Für reine E-Auto-Lader mit planbarem Ladefenster ist das Risiko gut beherrschbar.</p>
+    </details>
+    <details class="bg-white border border-stone-200 rounded-lg p-5">
+      <summary class="font-semibold flex justify-between items-center"><span>Welcher Anbieter ist für dynamisches Laden geeignet?</span><span class="accent">+</span></summary>
+      <p class="mt-3 text-stone-700 leading-relaxed text-sm">Bekannte Anbieter sind Tibber, aWATTar, Ostrom und 1Komma5°. Die Unterschiede liegen vor allem in der monatlichen Grundgebühr (0 bis 15 Euro), der Marge auf den Börsenpreis und der App-Qualität. Seit Januar 2025 muss laut Paragraf 41a EnWG ohnehin jeder Stromanbieter mindestens einen dynamischen Tarif anbieten.</p>
+    </details>
+  </div>
+</section>
+
+<footer class="border-t border-stone-200 bg-white">
+  <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-stone-500 flex flex-col md:flex-row justify-between gap-4">
+    <p>© 2026 Klarrechner.de</p>
+    <div class="flex gap-6">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="mailto:klarrechner.kontakt@gmail.com">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const profiles = {
+    'standard': { km: 15000, home: 80, shift: 80 },
+    'wenig':    { km: 8000,  home: 85, shift: 85 },
+    'viel':     { km: 25000, home: 75, shift: 75 },
+    'starr':    { km: 15000, home: 80, shift: 40 }
+  };
+
+  document.querySelectorAll('[data-profile]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = profiles[btn.dataset.profile];
+      document.getElementById('km').value = p.km;
+      document.getElementById('home-share').value = p.home;
+      document.getElementById('shift-share').value = p.shift;
+      document.getElementById('home-share-label').textContent = p.home;
+      document.getElementById('shift-share-label').textContent = p.shift;
+      document.querySelectorAll('[data-profile]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      calculate();
+    });
+  });
+
+  const fmt = (n) => new Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(n);
+  const fmt2 = (n) => new Intl.NumberFormat('de-DE', {minimumFractionDigits:2, maximumFractionDigits:2}).format(n);
+  const v = (id) => parseFloat(document.getElementById(id).value) || 0;
+
+  function calculate() {
+    const km = v('km');
+    const consumption = v('consumption');
+    const homeShare = v('home-share') / 100;
+    const shiftShare = v('shift-share') / 100;
+    const fixPrice = v('fix-price');
+    const cheapPrice = v('cheap-price');
+    const avgPrice = v('avg-price');
+    const smartMeter = v('smart-meter');
+
+    document.getElementById('home-share-label').textContent = (homeShare * 100).toFixed(0);
+    document.getElementById('shift-share-label').textContent = (shiftShare * 100).toFixed(0);
+
+    const totalKWh = (consumption / 100) * km;
+    const homeKWh = totalKWh * homeShare;
+
+    const netSavingEl = document.getElementById('net-saving');
+    const breakdownEl = document.getElementById('saving-breakdown');
+
+    if (homeKWh <= 0) {
+      netSavingEl.textContent = '–';
+      netSavingEl.classList.remove('ice-color'); netSavingEl.classList.add('accent');
+      breakdownEl.innerHTML = '<p class="text-stone-500">Bitte Fahrleistung, Verbrauch und Heim-Anteil eingeben.</p>';
+      document.getElementById('cost-fix').textContent = '–';
+      document.getElementById('cost-dyn').textContent = '–';
+      document.getElementById('cost-fix-detail').textContent = '– € / kWh';
+      document.getElementById('cost-dyn-detail').textContent = '– € / kWh';
+      document.getElementById('year-chart').innerHTML = '';
+      document.getElementById('verdict-text').textContent = '–';
+      document.getElementById('ten-year-text').textContent = '–';
+      return;
+    }
+
+    const cheapKWh = homeKWh * shiftShare;
+    const restKWh = homeKWh * (1 - shiftShare);
+
+    const costFix = homeKWh * fixPrice;
+    const costDynEnergy = cheapKWh * cheapPrice + restKWh * avgPrice;
+    const costDynTotal = costDynEnergy + smartMeter;
+
+    const grossSaving = costFix - costDynEnergy;
+    const netSaving = costFix - costDynTotal;
+
+    const dynPerKWh = costDynEnergy / homeKWh;
+
+    netSavingEl.textContent = fmt(netSaving);
+    if (netSaving > 0) { netSavingEl.classList.remove('ice-color'); netSavingEl.classList.add('accent'); }
+    else { netSavingEl.classList.remove('accent'); netSavingEl.classList.add('ice-color'); }
+
+    breakdownEl.innerHTML = `
+      <div class="flex justify-between"><span>Heim-Ladestrom pro Jahr</span><span>${new Intl.NumberFormat('de-DE',{maximumFractionDigits:0}).format(homeKWh)} kWh</span></div>
+      <div class="flex justify-between"><span>Kosten fester Tarif</span><span>${fmt(costFix)}</span></div>
+      <div class="flex justify-between"><span>Kosten dynamisch (Energie)</span><span>${fmt(costDynEnergy)}</span></div>
+      <div class="flex justify-between"><span>Brutto-Ersparnis</span><span>${fmt(grossSaving)}</span></div>
+      <div class="flex justify-between ice-color"><span>– Smart-Meter-Mehrkosten</span><span>−${fmt(smartMeter)}</span></div>
+      <div class="flex justify-between font-semibold pt-2 border-t border-stone-200 mt-2"><span>Netto-Ersparnis</span><span>${fmt(netSaving)}</span></div>
+    `;
+
+    document.getElementById('cost-fix').textContent = fmt(costFix);
+    document.getElementById('cost-dyn').textContent = fmt(costDynTotal);
+    document.getElementById('cost-fix-detail').textContent = fmt2(fixPrice) + ' € / kWh';
+    document.getElementById('cost-dyn-detail').textContent = fmt2(dynPerKWh) + ' € / kWh effektiv';
+
+    const chart = document.getElementById('year-chart');
+    let html = '';
+    let cumFix = 0;
+    let cumDyn = 0;
+    for (let y = 1; y <= 10; y++) {
+      cumFix += costFix;
+      cumDyn += costDynTotal;
+      const max = Math.max(cumFix, cumDyn, 1);
+      const fixPct = (cumFix / max) * 100;
+      const dynPct = (cumDyn / max) * 100;
+      html += `<div class="grid grid-cols-12 gap-1 items-center text-xs"><div class="col-span-1 text-stone-500">J${y}</div><div class="col-span-11 space-y-0.5"><div class="flex items-center gap-1"><div class="accent-bg h-2 rounded-sm" style="width:${Math.max(dynPct, 1)}%"></div><span class="text-stone-600 text-xs">${fmt(cumDyn)}</span></div><div class="flex items-center gap-1"><div class="h-2 rounded-sm" style="width:${Math.max(fixPct, 1)}%; background:#B45309"></div><span class="text-stone-600 text-xs">${fmt(cumFix)}</span></div></div></div>`;
+    }
+    chart.innerHTML = html + `<p class="text-xs text-stone-500 mt-3"><span class="inline-block w-2 h-2 accent-bg rounded-sm mr-1"></span>Dynamisch &nbsp;&nbsp;<span class="inline-block w-2 h-2 rounded-sm mr-1" style="background:#B45309"></span>Fester Tarif</p>`;
+
+    const verdict = document.getElementById('verdict-text');
+    if (netSaving > 0) {
+      verdict.innerHTML = `Bei deinen Annahmen lädst du mit einem dynamischen Tarif günstiger. Effektiver Ladepreis rund <strong class="accent">${fmt2(dynPerKWh)} €/kWh</strong> statt <strong>${fmt2(fixPrice)} €/kWh</strong> fest.`;
+    } else {
+      verdict.innerHTML = `Bei deinen Annahmen lohnt sich der Wechsel fürs Laden <strong class="ice-color">nicht</strong>. Prüfe den verschiebbaren Anteil und die Preisannahmen.`;
+    }
+
+    const tenYear = (costFix - costDynTotal) * 10;
+    const tenYearText = document.getElementById('ten-year-text');
+    if (tenYear > 0) {
+      tenYearText.innerHTML = `Über 10 Jahre sparst du fürs Laden rund <strong>${fmt(tenYear)}</strong> gegenüber deinem festen Tarif, bei deinen aktuellen Annahmen.`;
+    } else {
+      tenYearText.innerHTML = `Über 10 Jahre wäre der dynamische Tarif fürs Laden rund <strong>${fmt(Math.abs(tenYear))}</strong> teurer als dein fester Tarif. Mehr Flexibilität beim Laden würde das drehen.`;
+    }
+  }
+
+  const ids = ['km','consumption','home-share','shift-share','fix-price','cheap-price','avg-price','smart-meter'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', calculate);
+    el.addEventListener('change', calculate);
+  });
+
+  calculate();
+</script>
+
+<!-- Cookie/Datenschutz-Hinweis Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+  <div class="max-w-5xl mx-auto m-4 bg-white border border-stone-200 rounded-lg shadow-lg p-5">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+      <p class="text-sm text-stone-700 leading-relaxed">
+        🍪 Diese Website verwendet <strong>keine Tracking-Cookies</strong> und keine Analyse-Tools.
+        Alle Berechnungen laufen lokal in deinem Browser. Mehr in der
+        <a href="datenschutz.html" class="accent underline">Datenschutzerklärung</a>.
+      </p>
+      <button id="cookie-accept" class="accent-bg text-white px-5 py-2 rounded-md text-sm font-medium hover:opacity-90 whitespace-nowrap">
+        Verstanden
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var banner = document.getElementById("cookie-banner");
+    var accept = document.getElementById("cookie-accept");
+    if (!localStorage.getItem("klarrechner-banner-seen")) {
+      banner.classList.remove("hidden");
+    }
+    accept.addEventListener("click", function() {
+      localStorage.setItem("klarrechner-banner-seen", "1");
+      banner.classList.add("hidden");
+    });
+  })();
+</script>
+
+</body>
+</html>
