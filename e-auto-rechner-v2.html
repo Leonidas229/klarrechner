@@ -121,6 +121,7 @@
   @media (max-width: 640px) {
     .pill { padding: 0.5rem 0.75rem !important; font-size: 0.8rem !important; }
   }
+  .help-tip-pop { position: absolute; z-index: 70; max-width: 280px; background: #1c1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 10px 12px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
 </style>
   <meta property="og:url" content="https://www.klarrechner.de/e-auto-rechner-v2.html" />
   <meta property="og:site_name" content="Klarrechner.de" />
@@ -170,6 +171,17 @@
       Berechne in unter einer Minute die echten Gesamtkosten beider Optionen über mehrere Jahre.
       Inklusive Anschaffung, Energie, Wartung, Versicherung, Kfz-Steuer, THG-Prämie und realistischem Wertverlust.
     </p>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 pb-6">
+  <div class="accent-soft border accent-border rounded-lg p-5">
+    <p class="font-semibold mb-3 flex items-center gap-2"><span class="text-lg">👋</span> Zum ersten Mal hier? So funktioniert der Rechner:</p>
+    <ul class="text-sm text-stone-700 space-y-2">
+      <li class="flex gap-2"><span class="accent font-semibold">1.</span> <span>Alle Felder sind schon mit realistischen Werten gefüllt.</span></li>
+      <li class="flex gap-2"><span class="accent font-semibold">2.</span> <span>Pass einfach die Zahlen an, die du kennst, zum Beispiel deine Kilometer pro Jahr. Den Rest kannst du so lassen.</span></li>
+      <li class="flex gap-2"><span class="accent font-semibold">3.</span> <span>Dein Ergebnis erscheint sofort. Du kannst nichts kaputt machen, probier es ruhig aus.</span></li>
+    </ul>
   </div>
 </section>
 
@@ -596,6 +608,74 @@
     accept.addEventListener("click", function() {
       localStorage.setItem("klarrechner-banner-seen", "1");
       banner.classList.add("hidden");
+    });
+  })();
+</script>
+
+<script>
+  (function() {
+    var openTip = null;
+    var pinnedIcon = null;
+    function closeTip() {
+      if (openTip && openTip.parentNode) { openTip.parentNode.removeChild(openTip); }
+      openTip = null;
+      pinnedIcon = null;
+    }
+    function showTip(icon, text) {
+      closeTip();
+      var tip = document.createElement('div');
+      tip.className = 'help-tip-pop';
+      tip.textContent = text;
+      document.body.appendChild(tip);
+      var r = icon.getBoundingClientRect();
+      var top = r.bottom + window.pageYOffset + 8;
+      var left = r.left + window.pageXOffset - 10;
+      var minLeft = window.pageXOffset + 12;
+      var maxLeft = window.pageXOffset + document.documentElement.clientWidth - tip.offsetWidth - 12;
+      if (left > maxLeft) left = maxLeft;
+      if (left < minLeft) left = minLeft;
+      tip.style.top = top + 'px';
+      tip.style.left = left + 'px';
+      openTip = tip;
+    }
+    var icons = document.querySelectorAll('.help-icon[title]');
+    Array.prototype.forEach.call(icons, function(icon) {
+      var text = icon.getAttribute('title');
+      icon.removeAttribute('title');
+      icon.setAttribute('role', 'button');
+      icon.setAttribute('tabindex', '0');
+      icon.setAttribute('aria-label', 'Erkl\u00e4rung anzeigen');
+      icon.addEventListener('mouseenter', function() {
+        if (!pinnedIcon) showTip(icon, text);
+      });
+      icon.addEventListener('mouseleave', function() {
+        if (!pinnedIcon) closeTip();
+      });
+      icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (pinnedIcon === icon) {
+          closeTip();
+        } else {
+          showTip(icon, text);
+          pinnedIcon = icon;
+        }
+      });
+      icon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          if (pinnedIcon === icon) {
+            closeTip();
+          } else {
+            showTip(icon, text);
+            pinnedIcon = icon;
+          }
+        }
+      });
+    });
+    document.addEventListener('click', function() {
+      if (pinnedIcon) closeTip();
     });
   })();
 </script>

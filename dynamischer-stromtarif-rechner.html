@@ -123,6 +123,7 @@
     .scenario { padding: 0.75rem !important; }
     .scenario p.text-2xl { font-size: 1.5rem !important; margin-bottom: 0.25rem !important; }
   }
+  .help-tip-pop { position: absolute; z-index: 70; max-width: 280px; background: #1c1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 10px 12px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
 </style>
   <meta property="og:url" content="https://www.klarrechner.de/dynamischer-stromtarif-rechner.html" />
   <meta property="og:site_name" content="Klarrechner.de" />
@@ -548,6 +549,74 @@
     accept.addEventListener("click", function() {
       localStorage.setItem("klarrechner-banner-seen", "1");
       banner.classList.add("hidden");
+    });
+  })();
+</script>
+
+<script>
+  (function() {
+    var openTip = null;
+    var pinnedIcon = null;
+    function closeTip() {
+      if (openTip && openTip.parentNode) { openTip.parentNode.removeChild(openTip); }
+      openTip = null;
+      pinnedIcon = null;
+    }
+    function showTip(icon, text) {
+      closeTip();
+      var tip = document.createElement('div');
+      tip.className = 'help-tip-pop';
+      tip.textContent = text;
+      document.body.appendChild(tip);
+      var r = icon.getBoundingClientRect();
+      var top = r.bottom + window.pageYOffset + 8;
+      var left = r.left + window.pageXOffset - 10;
+      var minLeft = window.pageXOffset + 12;
+      var maxLeft = window.pageXOffset + document.documentElement.clientWidth - tip.offsetWidth - 12;
+      if (left > maxLeft) left = maxLeft;
+      if (left < minLeft) left = minLeft;
+      tip.style.top = top + 'px';
+      tip.style.left = left + 'px';
+      openTip = tip;
+    }
+    var icons = document.querySelectorAll('.help-icon[title]');
+    Array.prototype.forEach.call(icons, function(icon) {
+      var text = icon.getAttribute('title');
+      icon.removeAttribute('title');
+      icon.setAttribute('role', 'button');
+      icon.setAttribute('tabindex', '0');
+      icon.setAttribute('aria-label', 'Erkl\u00e4rung anzeigen');
+      icon.addEventListener('mouseenter', function() {
+        if (!pinnedIcon) showTip(icon, text);
+      });
+      icon.addEventListener('mouseleave', function() {
+        if (!pinnedIcon) closeTip();
+      });
+      icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (pinnedIcon === icon) {
+          closeTip();
+        } else {
+          showTip(icon, text);
+          pinnedIcon = icon;
+        }
+      });
+      icon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          if (pinnedIcon === icon) {
+            closeTip();
+          } else {
+            showTip(icon, text);
+            pinnedIcon = icon;
+          }
+        }
+      });
+    });
+    document.addEventListener('click', function() {
+      if (pinnedIcon) closeTip();
     });
   })();
 </script>
