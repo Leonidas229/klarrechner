@@ -123,6 +123,7 @@
     .scenario { padding: 0.75rem !important; }
     .scenario p.text-2xl { font-size: 1.5rem !important; margin-bottom: 0.25rem !important; }
   }
+  .help-tip-pop { position: absolute; z-index: 70; max-width: 280px; background: #1c1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 10px 12px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
 </style>
   <meta property="og:url" content="https://www.klarrechner.de/wallbox-rechner.html" />
   <meta property="og:site_name" content="Klarrechner.de" />
@@ -329,6 +330,12 @@
       <div class="bg-stone-900 text-white rounded-lg p-5">
         <p class="text-xs uppercase tracking-wide text-stone-400 mb-2">💡 Klarrechner-Tipp</p>
         <p class="text-sm leading-relaxed mb-3">Hol dir <strong>3 Angebote</strong> von Elektrikern in deiner Region, die Preise variieren stark, oft 500-1.000 € Unterschied bei gleicher Leistung. Wichtig: Achte darauf, dass die Anmeldung beim Netzbetreiber im Angebot enthalten ist (Pflicht seit § 14a EnWG).</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 rounded-lg p-5">
+        <p class="text-[11px] uppercase tracking-wide text-stone-400 mb-2">Anzeige</p>
+        <p class="text-sm leading-relaxed text-stone-700 mb-3">Elli (Volkswagen Group Charging) verkauft steuerbare 11- und 22-kW-Wallboxen mit festem Kabel und PV-Überschussladen. Eine von mehreren Optionen am Markt, vergleiche Preise und Ausstattung vor dem Kauf.</p>
+        <a href="https://www.awin1.com/cread.php?awinmid=31962&amp;awinaffid=2920117&amp;ued=https%3A%2F%2Fvw.elli.eco%2Fde-DE%2Fproducts" rel="sponsored noopener" target="_blank" class="inline-block accent-bg text-white px-5 py-2 rounded-md text-sm font-medium hover:opacity-90">Elli-Wallboxen ansehen</a>
       </div>
     </div>
   </div>
@@ -573,6 +580,74 @@
     accept.addEventListener("click", function() {
       localStorage.setItem("klarrechner-banner-seen", "1");
       banner.classList.add("hidden");
+    });
+  })();
+</script>
+
+<script>
+  (function() {
+    var openTip = null;
+    var pinnedIcon = null;
+    function closeTip() {
+      if (openTip && openTip.parentNode) { openTip.parentNode.removeChild(openTip); }
+      openTip = null;
+      pinnedIcon = null;
+    }
+    function showTip(icon, text) {
+      closeTip();
+      var tip = document.createElement('div');
+      tip.className = 'help-tip-pop';
+      tip.textContent = text;
+      document.body.appendChild(tip);
+      var r = icon.getBoundingClientRect();
+      var top = r.bottom + window.pageYOffset + 8;
+      var left = r.left + window.pageXOffset - 10;
+      var minLeft = window.pageXOffset + 12;
+      var maxLeft = window.pageXOffset + document.documentElement.clientWidth - tip.offsetWidth - 12;
+      if (left > maxLeft) left = maxLeft;
+      if (left < minLeft) left = minLeft;
+      tip.style.top = top + 'px';
+      tip.style.left = left + 'px';
+      openTip = tip;
+    }
+    var icons = document.querySelectorAll('.help-icon[title]');
+    Array.prototype.forEach.call(icons, function(icon) {
+      var text = icon.getAttribute('title');
+      icon.removeAttribute('title');
+      icon.setAttribute('role', 'button');
+      icon.setAttribute('tabindex', '0');
+      icon.setAttribute('aria-label', 'Erkl\u00e4rung anzeigen');
+      icon.addEventListener('mouseenter', function() {
+        if (!pinnedIcon) showTip(icon, text);
+      });
+      icon.addEventListener('mouseleave', function() {
+        if (!pinnedIcon) closeTip();
+      });
+      icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (pinnedIcon === icon) {
+          closeTip();
+        } else {
+          showTip(icon, text);
+          pinnedIcon = icon;
+        }
+      });
+      icon.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          if (pinnedIcon === icon) {
+            closeTip();
+          } else {
+            showTip(icon, text);
+            pinnedIcon = icon;
+          }
+        }
+      });
+    });
+    document.addEventListener('click', function() {
+      if (pinnedIcon) closeTip();
     });
   })();
 </script>
