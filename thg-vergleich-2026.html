@@ -172,7 +172,7 @@
   <p class="text-xs text-stone-500 mt-3">
     *Garantierte Fixprämie für ein reines E-Auto (PKW), typische Werte Stand Juli 2026. Beträge ändern sich laufend, bitte den tagesaktuellen Betrag beim jeweiligen Anbieter prüfen.
     Flexible Prämien einzelner Anbieter können höher liegen (teils bis ~450 €), sind aber nicht garantiert.
-    <span class="block mt-1">Transparenz: Die mit „Anbieter" verlinkten Buttons können Affiliate-Links sein, für dich ohne Mehrkosten. Die Reihenfolge in der Tabelle ist nach Prämienhöhe sortiert, nicht nach Vergütung.</span>
+    <span class="block mt-1">Transparenz: Die Buttons führen zu den offiziellen Anbieterseiten; einzelne können als Affiliate-Links gekennzeichnet sein, für dich ohne Mehrkosten. Die Reihenfolge ist nach Prämienhöhe sortiert, nicht nach Vergütung.</span>
   </p>
 </section>
 
@@ -200,46 +200,7 @@
   </div>
 </section>
 
-<!-- ===================== LEAD-MAGNET / NEWSLETTER-BLOCK ===================== -->
-<section class="max-w-5xl mx-auto px-6 py-10">
-  <div id="newsletter" class="accent-bg text-white rounded-2xl p-8 md:p-10">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <p class="text-xs uppercase tracking-widest text-emerald-200 font-semibold mb-3">📩 Gratis-Download</p>
-        <h2 class="display text-3xl font-semibold mb-3 leading-tight">Die E-Auto-Förderung 2026 Checkliste, gratis als PDF</h2>
-        <p class="text-emerald-50 leading-relaxed mb-4">
-          Alle Einkommensgrenzen, Beträge und Antragsschritte auf einer Seite. Plus: Wir erinnern dich per Mail,
-          sobald der BAFA-Antrag ab Mai 2026 startet, damit du früh dran bist, bevor das Budget aufgebraucht ist.
-        </p>
-        <ul class="text-sm text-emerald-50 space-y-1.5">
-          <li>✓ Checkliste sofort nach Bestätigung</li>
-          <li>✓ Kein Spam, jederzeit abbestellbar</li>
-          <li>✓ Datenschutzkonform (Double-Opt-in)</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-xl p-6 text-stone-900">
-        <form id="lead-form" novalidate>
-          <label class="block text-sm font-medium mb-1" for="lead-name">Vorname <span class="text-stone-400 font-normal">(optional)</span></label>
-          <input id="lead-name" name="name" type="text" autocomplete="given-name" class="w-full px-4 py-2.5 border border-stone-300 rounded-md mb-4" placeholder="Max" />
-
-          <label class="block text-sm font-medium mb-1" for="lead-email">E-Mail-Adresse</label>
-          <input id="lead-email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-2.5 border border-stone-300 rounded-md mb-4" placeholder="max@beispiel.de" />
-
-          <label class="flex items-start gap-2 text-xs text-stone-600 mb-4 leading-relaxed">
-            <input id="lead-consent" type="checkbox" required class="mt-0.5" style="accent-color:#2D5A3D;min-width:16px;min-height:16px" />
-            <span>Ich möchte die Checkliste und gelegentliche Hinweise zu E-Auto-Förderungen per E-Mail erhalten. Die Einwilligung kann ich jederzeit widerrufen. Details in der <a href="datenschutz.html" class="accent underline">Datenschutzerklärung</a>.</span>
-          </label>
-
-          <button type="submit" id="lead-submit" class="w-full accent-bg text-white px-5 py-3 rounded-md font-medium hover:opacity-90 transition">
-            Checkliste kostenlos anfordern →
-          </button>
-          <p id="lead-msg" class="text-sm mt-3 hidden"></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- =================== ENDE LEAD-MAGNET / NEWSLETTER-BLOCK =================== -->
+<!-- Newsletter/Lead-Magnet folgt, sobald der E-Mail-Dienst angebunden ist (Baustein liegt in newsletter-block.html bereit). -->
 
 <!-- FAQ -->
 <section class="max-w-3xl mx-auto px-6 py-12">
@@ -316,24 +277,22 @@
 </div>
 
 <script>
-  // ====== Anbieterdaten – Beträge Stand Juli 2026 (typische Fixprämien). Bitte aktuell halten. ======
-  // affiliate: Hier deinen gekennzeichneten Affiliate-Link je Anbieter eintragen (sonst bleibt der Button unverlinkt).
+  // ====== Anbieter – typische Fixprämien, Stand Juli 2026. Beträge regelmäßig prüfen/aktualisieren. ======
+  // url       = offizielle Anbieterseite (Button funktioniert sofort).
+  // affiliate = optional dein gekennzeichneter Affiliate-Link; ist er gesetzt, wird er statt der offiziellen Seite verwendet.
   const providers = [
-    { name: 'Geld für eAuto', amount: '≈ 360 €', payout: 'Express, wenige Tage', strength: 'Höchste Fixprämie, Bestpreisgarantie', top: true, affiliate: '' },
-    { name: 'THG-Experten',   amount: '≈ 360 €', payout: 'Direktzahlung ~5 Tage', strength: 'Garantie, schnelle Auszahlung', top: true, affiliate: '' },
-    { name: 'Elektrovorteil', amount: '≈ 350 €', payout: 'Sofortoption', strength: 'Neufahrzeug-Bonus möglich', affiliate: '' },
-    { name: 'Quotlix',        amount: '≈ 330 €', payout: 'Garantie', strength: 'Solide Fixprämie', affiliate: '' },
-    { name: 'Check24',        amount: '≈ 295 €', payout: 'Garantie', strength: 'Bekanntes Vergleichsportal', affiliate: '' },
-    { name: 'EnBW',           amount: '≈ 295 €', payout: 'Garantie', strength: 'Etablierter Energiekonzern', affiliate: '' },
-    { name: 'E.ON',           amount: '≈ 275 €', payout: 'Fixprämie', strength: 'Großer Versorger', affiliate: '' },
-    { name: 'ADAC',           amount: '≈ 250–300 €', payout: 'Garantie', strength: 'Mitglieder-Vorteile', affiliate: '' }
+    { name: 'Geld für eAuto', amount: '≈ 360 €', payout: 'Express, wenige Tage', strength: 'Höchste Fixprämie, Bestpreisgarantie', top: true, url: 'https://geld-fuer-eauto.de', affiliate: '' },
+    { name: 'Elektrovorteil', amount: '≈ 350 €', payout: 'Sofortoption', strength: 'Neufahrzeug-Bonus möglich', top: true, url: 'https://elektrovorteil.de', affiliate: '' },
+    { name: 'Check24',        amount: '≈ 300 €', payout: 'Garantie', strength: 'Bekanntes Vergleichsportal', url: 'https://thg.check24.de', affiliate: '' },
+    { name: 'Verivox',        amount: '≈ 300 €', payout: 'Garantie', strength: 'Etabliertes Vergleichsportal', url: 'https://www.verivox.de', affiliate: '' },
+    { name: 'EnBW',           amount: '≈ 295 €', payout: 'Garantie', strength: 'Etablierter Energiekonzern', url: 'https://www.enbw.com/elektromobilitaet/thg-quote', affiliate: '' },
+    { name: 'ADAC',           amount: '≈ 250–300 €', payout: 'Garantie', strength: 'Mitglieder-Vorteile', url: 'https://www.adac.de/rund-ums-fahrzeug/elektromobilitaet/elektroauto/thg-quote/', affiliate: '' }
   ];
 
   const body = document.getElementById('prov-body');
   body.innerHTML = providers.map(function(p) {
-    const btn = p.affiliate
-      ? '<a href="' + p.affiliate + '" rel="sponsored nofollow noopener" target="_blank" class="prov-btn inline-block accent-bg text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">Zum Anbieter →</a>'
-      : '<span class="text-xs text-stone-400 whitespace-nowrap">Link einfügen</span>';
+    const href = p.affiliate || p.url;
+    const btn = '<a href="' + href + '" rel="sponsored nofollow noopener" target="_blank" class="prov-btn inline-block accent-bg text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">Zum Anbieter →</a>';
     return '<tr class="border-b border-stone-100 ' + (p.top ? 'row-top' : '') + '">' +
       '<td class="px-4 py-3 font-semibold">' + p.name + (p.top ? ' <span class="text-xs accent">★</span>' : '') + '</td>' +
       '<td class="px-4 py-3 font-semibold accent">' + p.amount + '</td>' +
@@ -342,54 +301,6 @@
       '<td class="px-4 py-3 text-right">' + btn + '</td>' +
     '</tr>';
   }).join('');
-
-  // ====== Lead-Magnet Formular ======
-  // ANBINDUNG: data-endpoint auf deinen Formular-Endpunkt setzen (z. B. MailerLite / Brevo / Buttondown / Formspark).
-  // Ohne Endpoint zeigt das Formular eine freundliche Erfolgsmeldung im Demo-Modus, speichert aber nichts.
-  const form = document.getElementById('lead-form');
-  const msg = document.getElementById('lead-msg');
-  const ENDPOINT = form.getAttribute('data-endpoint'); // z. B. "https://assets.mailerlite.com/jsonp/…"
-
-  function showMsg(text, ok) {
-    msg.textContent = text;
-    msg.className = 'text-sm mt-3 ' + (ok ? 'accent' : 'ice-color');
-    msg.classList.remove('hidden');
-  }
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('lead-email').value.trim();
-    const consent = document.getElementById('lead-consent').checked;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Bitte gib eine gültige E-Mail-Adresse ein.', false); return; }
-    if (!consent) { showMsg('Bitte bestätige die Einwilligung, damit wir dir die Checkliste schicken dürfen.', false); return; }
-
-    const btn = document.getElementById('lead-submit');
-    btn.disabled = true; btn.textContent = 'Wird gesendet …';
-
-    if (!ENDPOINT) {
-      // Demo-Modus (noch kein Endpoint hinterlegt)
-      setTimeout(function() {
-        showMsg('✓ Fast geschafft! Sobald das Formular mit deinem Newsletter-Dienst verbunden ist, bekommst du hier eine Bestätigungsmail. (Demo-Modus)', true);
-        btn.disabled = false; btn.textContent = 'Checkliste kostenlos anfordern →';
-        form.reset();
-      }, 600);
-      return;
-    }
-
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, name: document.getElementById('lead-name').value.trim() })
-    })
-    .then(function(r) {
-      if (r.ok) {
-        showMsg('✓ Fast geschafft! Bitte bestätige den Link in der E-Mail, die wir dir gerade geschickt haben.', true);
-        form.reset();
-      } else { showMsg('Da ist etwas schiefgelaufen. Bitte versuch es später noch einmal.', false); }
-    })
-    .catch(function() { showMsg('Da ist etwas schiefgelaufen. Bitte versuch es später noch einmal.', false); })
-    .finally(function() { btn.disabled = false; btn.textContent = 'Checkliste kostenlos anfordern →'; });
-  });
 
   // Cookie-Banner
   (function() {
