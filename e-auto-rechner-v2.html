@@ -122,6 +122,8 @@
     .pill { padding: 0.5rem 0.75rem !important; font-size: 0.8rem !important; }
   }
   .help-tip-pop { position: absolute; z-index: 70; max-width: 280px; background: #1c1917; color: #fff; font-size: 12px; line-height: 1.5; padding: 10px 12px; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+  .cta-row { transition: transform .15s ease, box-shadow .15s ease; }
+  .cta-row:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
 </style>
   <meta property="og:url" content="https://www.klarrechner.de/e-auto-rechner-v2.html" />
   <meta property="og:site_name" content="Klarrechner.de" />
@@ -155,6 +157,7 @@
     <nav class="hidden md:flex gap-8 text-sm text-stone-600">
       <a href="index.html" class="hover:text-stone-900">Startseite</a>
       <a href="#" class="font-semibold text-stone-900">E-Auto Rechner</a>
+      <a href="foerder-rechner-2026.html" class="hover:text-stone-900">Förderung</a>
       <a href="wallbox-rechner.html" class="hover:text-stone-900">Wallbox</a>
       <a href="ueber-uns.html" class="hover:text-stone-900">Über uns</a>
     </nav>
@@ -342,15 +345,54 @@
         <div id="breakdown" class="space-y-2 text-sm"></div>
       </div>
 
+      <!-- ===================== ERGEBNIS-CTA / MONETARISIERUNG ===================== -->
       <div class="accent-soft rounded-lg p-5 border accent-border">
-        <p class="text-xs uppercase tracking-wide accent font-semibold mb-2">💡 Geld sichern</p>
-        <p class="text-sm leading-relaxed mb-3 text-stone-800">
-          <strong>Du fährst bereits ein E-Auto?</strong> Dann hast du Anspruch auf die jährliche THG-Prämie, steuerfrei für Privatpersonen, einmal im Jahr ein Foto vom Fahrzeugschein hochladen. Wie das funktioniert und worauf du achten solltest, habe ich im Steuer-Ratgeber ausführlich erklärt.
+        <p class="text-xs uppercase tracking-wide accent font-semibold mb-1">💡 Jetzt bares Geld sichern</p>
+        <p id="cta-intro" class="text-sm leading-relaxed mb-4 text-stone-800">
+          Wenn du auf ein E-Auto umsteigst, holst du mit drei Schritten mehrere tausend Euro heraus, die viele liegen lassen:
         </p>
-        <a href="steuervorteile-e-auto-2026.html" class="inline-block accent-bg text-white px-4 py-2 rounded text-sm font-medium hover:opacity-90">
-          THG im Steuer-Ratgeber →
-        </a>
+        <div class="space-y-2.5">
+          <!-- 1) Kaufprämie -->
+          <a href="foerder-rechner-2026.html"
+             class="cta-row flex items-center gap-3 bg-white border border-stone-200 rounded-md p-3 block">
+            <span class="text-2xl">💶</span>
+            <span class="flex-1">
+              <span class="block font-semibold text-sm text-stone-900">Kaufprämie bis 6.000 € sichern</span>
+              <span class="block text-xs text-stone-600">Einmalzuschuss 2026, gestaffelt nach Einkommen. Berechne deinen Betrag.</span>
+            </span>
+            <span class="accent font-semibold">→</span>
+          </a>
+          <!-- 2) THG-Prämie (Affiliate möglich) -->
+          <!-- MONETARISIERUNG: href auf deinen gekennzeichneten THG-Affiliate-Link setzen.
+               Ohne Änderung führt der Link auf deinen internen THG-Anbietervergleich (dort sitzt die Affiliate-Tabelle). -->
+          <a href="thg-vergleich-2026.html"
+             class="cta-row flex items-center gap-3 bg-white border border-stone-200 rounded-md p-3 block">
+            <span class="text-2xl">🌱</span>
+            <span class="flex-1">
+              <span class="block font-semibold text-sm text-stone-900">THG-Prämie holen · ~300 € pro Jahr</span>
+              <span class="block text-xs text-stone-600">Jährlich, steuerfrei, nur Fahrzeugschein-Foto. Anbieter im Vergleich.</span>
+            </span>
+            <span class="accent font-semibold">→</span>
+          </a>
+          <!-- 3) Günstiger laden (Affiliate möglich) -->
+          <!-- MONETARISIERUNG: href auf deinen Stromtarif-Affiliate-Link (z. B. Tibber/Ostrom) setzen.
+               Ohne Änderung führt der Link auf deinen internen Stromtarif-Rechner. -->
+          <a href="dynamischer-stromtarif-rechner.html"
+             class="cta-row flex items-center gap-3 bg-white border border-stone-200 rounded-md p-3 block">
+            <span class="text-2xl">🔌</span>
+            <span class="flex-1">
+              <span class="block font-semibold text-sm text-stone-900">Günstiger laden mit dynamischem Tarif</span>
+              <span class="block text-xs text-stone-600">Zu Hause laden ab ~0,25 €/kWh, mehrere hundert Euro im Jahr sparen.</span>
+            </span>
+            <span class="accent font-semibold">→</span>
+          </a>
+        </div>
+        <p class="text-[11px] text-stone-500 mt-3 leading-relaxed">
+          Transparenz: Einige Empfehlungen können Affiliate-Links sein, für dich ohne Mehrkosten. Ich empfehle nur, was ich selbst rechnen würde.
+        </p>
       </div>
+      <!-- =================== ENDE ERGEBNIS-CTA / MONETARISIERUNG =================== -->
+
     </div>
   </div>
 
@@ -510,15 +552,19 @@
     const diff = Math.abs(evTotal - iceTotal);
     const winner = document.getElementById('winner');
     const savings = document.getElementById('savings');
+    const ctaIntro = document.getElementById('cta-intro');
     if (evTotal < iceTotal) {
       winner.innerHTML = 'Das <span class="accent">E-Auto</span> ist günstiger';
       savings.innerHTML = `Du sparst <strong>${fmt(diff)}</strong> über ${years} ${years===1?'Jahr':'Jahre'}.`;
+      if (ctaIntro) ctaIntro.innerHTML = 'Dein Ergebnis spricht fürs E-Auto. Mit diesen drei Schritten holst du zusätzlich mehrere tausend Euro heraus, die viele liegen lassen:';
     } else if (iceTotal < evTotal) {
       winner.innerHTML = 'Der <span class="ice-color">Verbrenner</span> ist günstiger';
       savings.innerHTML = `Du sparst <strong>${fmt(diff)}</strong> über ${years} ${years===1?'Jahr':'Jahre'}.`;
+      if (ctaIntro) ctaIntro.innerHTML = 'Knapp am Verbrenner dran? Diese drei Hebel verschieben die Rechnung oft klar zugunsten des E-Autos:';
     } else {
       winner.textContent = 'Gleichauf';
       savings.textContent = 'Beide Optionen kosten dich gleich viel.';
+      if (ctaIntro) ctaIntro.innerHTML = 'Bei Gleichstand entscheiden die Extras. Mit diesen drei Schritten kippt die Rechnung fürs E-Auto:';
     }
 
     const breakdown = document.getElementById('breakdown');
@@ -644,7 +690,7 @@
       icon.removeAttribute('title');
       icon.setAttribute('role', 'button');
       icon.setAttribute('tabindex', '0');
-      icon.setAttribute('aria-label', 'Erkl\u00e4rung anzeigen');
+      icon.setAttribute('aria-label', 'Erklärung anzeigen');
       icon.addEventListener('mouseenter', function() {
         if (!pinnedIcon) showTip(icon, text);
       });
